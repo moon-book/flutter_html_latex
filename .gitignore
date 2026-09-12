@@ -1,0 +1,6 @@
+.vscode/
+pubspec.lock
+.flutter-plugins-dependencies
+.flutter-plugins
+.idea/
+.dart_tool/

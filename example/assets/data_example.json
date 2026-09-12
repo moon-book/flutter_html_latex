@@ -1,0 +1,654 @@
+{
+  "data": [
+    {
+      "ID": 1451,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003E&nbsp;\u003C/strong\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n\\int_0^2|x-1| d x &amp; =\\int_0^1-(x-1) d x+\\int_1^2(x-1) d x \\\\\r\n&amp; =\\left[-\\frac{x^2}{2}+x\\right]_0^1+\\left[\\frac{x^2}{2}-x\\right]_1^2 \\\\\r\n&amp; =\\left(-\\frac{1}{2}+1\\right)+(2-2)-\\left(\\frac{1}{2}-1\\right)=1\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(0\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(1\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(2\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{2}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\int_0^2|x-1| d x=?\\)\u003C/span\u003E",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3730,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n\\tan 75^{\\circ}=\\tan \\left(45^{\\circ}+30^{\\circ}\\right)\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n=\\frac{\\tan 45^{\\circ}+\\tan 30^{\\circ}}{1-\\tan 45^{\\circ} \\tan 30^{\\circ}}\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(=\\frac{1+\\frac{1}{\\sqrt{3}}}{1-\\frac{1}{\\sqrt{3}}}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(=\\frac{\\sqrt{3}+1}{\\sqrt{3}-1}\\)\u003C/span\u003E\u003C/p\u003E\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1-\\sqrt{3}}{1+\\sqrt{3}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{\\sqrt{3}+1}{\\sqrt{3}-1}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{\\sqrt{3}-1}{\\sqrt{3}+1}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1+\\sqrt{3}}{1-\\sqrt{3}}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\tan 75^{\\circ}=?\\)\u003C/span\u003E",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3164,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(7_{\\mathrm{C}_4} \\times 5_{\\mathrm{c}_3}=\\frac{7.6 .5 .4}{4.3 .2 .1} \\times \\frac{5.4 .3}{3.2 .1}=350\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "350",
+        "10",
+        "35",
+        "30"
+      ],
+      "question": "7 জন সিনেটর ও 5 জন গভর্নরের একটি দল থেকে কত উপায়ে 4 জন সিনেটর ও 3 জন গভর্নরের একটি কমিটি গঠন করা যায়?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1984,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n&amp;  n(A \\cup B \\cup C)=n(A)+n(B)+n(C)-n(A \\cap B)- \\\\\r\n&amp; n(B \\cap C)-n(C \\cap A)+n(A \\cap B \\cap C) \\\\\r\n&amp; \\Rightarrow 70=(40-15)+(35-15)+(30-15)-n(A \\cap B)- \\\\\r\n&amp; n(B \\cap C)-n(C \\cap A)+15 \\\\\r\n&amp; \\Rightarrow n(A \\cap B)+n(B \\cap C)+n(C \\cap A)=5\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "5",
+        "6",
+        "8",
+        "9"
+      ],
+      "question": "70 জন শিক্ষার্থী গণিত, পদার্থবিদ্যা ও রসায়ন অধ্যয়ন করে। তার মধ্যে 40 জন পদার্থবিদ্যা, 30 জন রসায়ন এবং 35 জন গণিতে অধ্যয়ন করে। 15 জন শিক্ষার্থী তিনটি বিষয়ই অধ্যয়ন করে। কতজন শিক্ষার্থী কেবল দুইটি বিষয় অধ্যয়ন করে?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3685,
+      "answer": "OptionB",
+      "explanation": "",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{2}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{5}{11}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{6}{11}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{3}{5}\\)\u003C/span\u003E"
+      ],
+      "question": "30 থেকে 40 পর্যন্ত সংখ্যা হতে যে কোন একটিকে ইচ্ছামত নিলে সেই সংখ্যাটি মৌলিক অথবা 5 এর গুণিতক হওয়ার সম্ভাব্যতা কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3719,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\nr=\\sin \\theta \\Rightarrow r^2=r \\sin \\theta\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n\\Rightarrow x^2+y^2-y=0\n\\end{equation}\\)\u003C/span\u003E&nbsp;এর কেন্দ্র&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n\\left(0, \\frac{1}{2}\\right)\n\\end{equation}\\)\u003C/span\u003E&nbsp;এবং ব্যাসার্ধ&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n=\\frac{1}{2}\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\left(\\frac{1}{2}, 0\\right), \\frac{1}{2}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm({0,2}), \\frac{1}{2}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\left(0, \\frac{1}{2}\\right), 2\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\left(0, \\frac{1}{2}\\right), \\frac{1}{2}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(r=\\sin \\theta\\)\u003C/span\u003E বৃত্তের কেন্দ্র ও ব্যাসার্ধ কত হবে?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3158,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\tan \\theta+\\sec \\theta=\\mathrm{x}\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n&amp; \\Rightarrow \\frac{1+\\sin \\theta}{\\cos \\theta}=x \\Rightarrow \\frac{(1+\\sin \\theta)^2}{\\cos ^2 \\theta}=x^2 \\\\\r\n&amp; \\Rightarrow \\frac{1+\\sin \\theta}{1-\\sin \\theta}=x^2 \\Rightarrow \\frac{1+\\sin \\theta+1-\\sin \\theta}{1+\\sin \\theta-1+\\sin \\theta}=\\frac{x^2+1}{x^2-1} \\\\\r\n&amp; \\Rightarrow \\frac{2}{2 \\sin \\theta}=\\frac{x^2+1}{x^2-1} \\therefore \\operatorname{cosec} \\theta=\\frac{x^2+1}{x^2-1}\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{x^2+1}{x^2-1}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{x^2-1}{x^2+1}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1-x^2}{1+x^2}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1+x^2}{1-x^2}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\tan \\theta+\\sec \\theta=\\mathbf{x}\\)\u003C/span\u003E&nbsp;হলে&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\operatorname{cosec} \\theta\\)\u003C/span\u003E এর মান কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1433,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:&nbsp;\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003Eএখানে,&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\frac{2 b^2}{a}=\\frac{2 a}{2} \\Rightarrow a^2=2 b^2\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;উৎকেন্দ্রিকতা,&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{e}=\\sqrt{1-\\frac{\\mathrm{b}^2}{\\mathrm{a}^2}}=\\sqrt{1-\\frac{\\mathrm{b}^2}{2 \\mathrm{~b}^2}}=\\sqrt{\\frac{1}{2}}=\\frac{1}{\\sqrt{2}}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{\\sqrt{3}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{\\sqrt{2}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{2}{\\sqrt{3}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{2}{3}\\)\u003C/span\u003E"
+      ],
+      "question": "একটি উপবৃত্তের উপকেন্দ্রিক লম্বের দৈর্ঘ্য বৃহদাক্ষের দৈর্ঘ্যের অর্ধেক, উপবৃত্তটির উৎকেন্দ্রিকতা কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1445,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003E&nbsp;\u003C/strong\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\int_{-2}^{-1}(x+|x|) d x\\\\ \r\n=\\int_{-2}^{-1} x d x+\\int_{-2}^{-1}-x d x\\\\\r\n =0\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "3",
+        "0",
+        "1",
+        "6"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\int_{-2}^{-1}(x+|x|) d x=?\\)\u003C/span\u003E",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1449,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003Eএকটি বস্তুকে u বেগে খাড়া উপরের দিকে নিক্ষেপ করলে,\u003C/p\u003E\r\n\r\n\u003Col\u003E\r\n\t\u003Cli\u003Eসর্বোচ্চ উচ্চতা,&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{H}=\\frac{\\mathrm{u}^2}{2 \\mathrm{~g}}\\)\u003C/span\u003E\u003C/li\u003E\r\n\t\u003Cli\u003Eউত্থানকাল,&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{t}=\\frac{\\mathrm{u}}{\\mathrm{g}}\\)\u003C/span\u003E\u003C/li\u003E\r\n\t\u003Cli\u003Eবিচরণকাল,&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(T=\\frac{2 u}{g}\\)\u003C/span\u003E\u003C/li\u003E\r\n\t\u003Cli\u003Eসুতরাং, সর্বোচ্চ উচ্চতা,&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{H}=\\frac{(2 \\mathrm{u})^2}{2 \\mathrm{~g}}=\\frac{2 \\mathrm{u}^2}{\\mathrm{~g}}\\)\u003C/span\u003E\u003C/li\u003E\r\n\u003C/ol\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{\\mathrm{u}^2}{2 \\mathrm{~g}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{2 u^2}{g}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{\\mathrm{u}^2}{2 \\mathrm{~g}} \\sin \\alpha\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{\\mathrm{u}^2}{2 \\mathrm{~g}} \\cos \\alpha\\)\u003C/span\u003E"
+      ],
+      "question": "2u আদিবেগ এবং অনুভূমির সাথে লম্বভাবে প্রক্ষিপ্ত বস্তুর সর্বোচ্চ উচ্চতা হবে-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1545,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003Eস্বরবর্ণের অবস্থান পরিবর্তন না করে বাকী বর্ণ গুলোকে সাজানো&nbsp;যায় -\u003C/p\u003E\n\n\u003Cp\u003E\u003Cimg alt=\"\" src=\"https://s3.amazonaws.com/q.images/math/6061image-removebg-preview_2.png\" style=\"height:52px; width:120px\" /\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;পুনরায় সাজানো সংখ্যা&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(=360-1=359\\)\u003C/span\u003E\u003C/p\u003E\n",
+      "options": [
+        "360",
+        "460",
+        "459",
+        "359"
+      ],
+      "question": "&ldquo;Permutation&rdquo; শব্দটির বর্ণগুলোর মধ্যে স্বরবর্ণের অবস্থান পরিবর্তন না করে বর্ণগুলোকে কত রকমে পুনরায় সাজানো যাবে?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1884,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(r=\\frac{2 \\times 10}{2-(-3)}=4\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore x\\)\u003C/span\u003E&nbsp;বর্জিত পদটি (4 + 1) = 5 তম\u003C/p\u003E\r\n\r\n\u003Cp\u003Eএবং মান&nbsp;\u003Cspan class=\"math-tex\"\u003E\\({ }^{10} C_4(2){ }^{10-4}\\left(-\\frac{1}{2}\\right)^4=840\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "পঞ্চম এবং 840",
+        "চতুর্থ এবং 1920",
+        "ষষ্ঠ এবং 252",
+        "সপ্তম এবং 30"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\left(2 x^2-\\frac{1}{2 x^3}\\right)^{10}\\)\u003C/span\u003E&nbsp;এর বিস্তৃতিতে&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(x\\)\u003C/span\u003E বর্জিত পদটি কততম এবং এর মান কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2451,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(n(A \\cup B)=n(A)+n(B)-n(A \\cap B)\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\Rightarrow 120=75+60-n(A \\cap B) \\therefore n(A \\cap B)=15\\)\u003C/span\u003E&nbsp;জন।\u003C/p\u003E\r\n",
+      "options": [
+        "13",
+        "15",
+        "25",
+        "23"
+      ],
+      "question": "একটি ক্লাসের 120 জন ছাত্র সকলেই ক্রিকেট অথবা ফুটবল অথবা উভয়ই খেলে। 75 জন ক্রিকেট খেলে এবং 60 জন ফুটবল খেলে। কতজন উভয়ই খেলে।",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1441,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(x^2-3 y^2-2 x=8 \\\\ \\Rightarrow x^2-2 x+1-3 y^2=8+1\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\Rightarrow(x-1)^2-3 y^2=9 \\Rightarrow \\frac{(x-1)^2}{9}-\\frac{y^2}{3}=1\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003Eএখানে, শীর্ষবিন্দু&nbsp;\u003Cspan class=\"math-tex\"\u003E\\((x,y) = (0,0)\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore \\mathrm{x}-1= \\pm 3 \\Rightarrow \\mathrm{x}=4,-2 \\)\u003C/span\u003E&nbsp;এবং&nbsp;\u003Cspan class=\"math-tex\"\u003E\\( y = 0\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003Eঅর্থাৎ, শীর্ষবিন্দু&nbsp;\u003Cspan class=\"math-tex\"\u003E\\((4, 0), (-2, 0)\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "(-4, 0), (2, 0)",
+        "(0, 4), (0, 2)",
+        "(0,-4), (0,-1)",
+        "(4, 0), (-2, 0)"
+      ],
+      "question": "x&sup2; - 3y&sup2; - 2x = 8 অধিবৃত্তের শীর্ষবিন্দুদ্বয়",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1605,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{R}_{\\max }=\\mathrm{P}+\\mathrm{Q}=2+5=7 \\mathrm{~N}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(7N\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(3N\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\sqrt{29 N}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(5N\\)\u003C/span\u003E"
+      ],
+      "question": "2N এবং 5N মানের দুইটি বল একই রেখায় একই দিকে ক্রিয়ারত। উহাদের সর্বাধিক লব্ধি হবে-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1824,
+      "answer": "OptionC",
+      "explanation": "\u003Cp\u003Eঅপশন (C) হতে, p = 8 হলে, 2p = 16\u003Cbr /\u003E\r\nঅর্থাৎ, 2p : p = 18 : 8 = 2 : 1\u003Cbr /\u003E\r\n2p কে দ্বিগুণ করলে এবং p কে 8 একক বৃদ্ধি করলে = 32 : 16 = 2 : 1 অর্থাৎ লব্ধির দিক অপরিবর্তিত থাকে।\u003C/p\u003E\r\n",
+      "options": [
+        "1",
+        "2",
+        "4",
+        "8"
+      ],
+      "question": "কোনো বিন্দুতে P এবং 2P মানের দুইটি বল ক্রিয়াশীল। প্রথম বলটিকে দ্বিগুণ করে দ্বিতীয়টির মান 8 একক বৃদ্ধি করা হলে তাদের লব্ধির দিক অপরিবর্তিত থাকে। P এর মান-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2283,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\((\\alpha+2)(\\alpha-4)-16=0 \\Rightarrow \\alpha=6,-4\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "6, -4",
+        "-6, 4",
+        "4, 6",
+        "-6, -4"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\left(\\begin{array}{cc}\r\n\\alpha+2 &amp; 2 \\\\\r\n8 &amp; \\alpha-4\r\n\\end{array}\\right)\\)\u003C/span\u003E&nbsp;ম্যাট্রিক্সটি ব্যতিক্রমী হবে যদি&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\alpha=?\\)\u003C/span\u003E",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2407,
+      "answer": "OptionB",
+      "explanation": "",
+      "options": [
+        "3cos A - 4cos\u003Csup\u003E3\u003C/sup\u003E A",
+        "3sin A - 4sin\u003Csup\u003E3\u003C/sup\u003E A",
+        "4cos A - 3cos\u003Csup\u003E3\u003C/sup\u003E A",
+        "4sin\u003Csup\u003E3\u003C/sup\u003E A - 3sin A"
+      ],
+      "question": "নিচের কোন রাশিমালাটি sin3A কে sinA বা cosA এর বহুপদীরূপে প্রকাশ করে?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3723,
+      "answer": "OptionC",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n\\omega^{16}+\\omega^{32}=\\left(\\omega^3\\right)^5 \\cdot \\omega+\\left(\\omega^3\\right)^{10} \\cdot \\omega^2\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(=\\omega+\\omega^2=-1\\)\u003C/span\u003E\u003C/p\u003E\n",
+      "options": [
+        "1",
+        "2",
+        "-1",
+        "-2"
+      ],
+      "question": "1-এর একটি জটিল ঘনমূল&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\omega\\)\u003C/span\u003E&nbsp;হলে&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\omega^{16}+\\omega^{32}=?\\)\u003C/span\u003E",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1579,
+      "answer": "OptionC",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n&amp; \\left|\\begin{array}{ccc}\r\n1 &amp; 1 &amp; 1 \\\\\r\n1 &amp; \\mathrm{k} &amp; \\mathrm{k}^2 \\\\\r\n1 &amp; \\mathrm{k}^2 &amp; \\mathrm{k}^4\r\n\\end{array}\\right| \\neq 0 \\Rightarrow\\left|\\begin{array}{cc}\r\n\\mathrm{k}-1 &amp; \\mathrm{k}^2-\\mathrm{k} \\\\\r\n\\mathrm{k}^2-1 &amp; \\mathrm{k}^4-\\mathrm{k}^2\r\n\\end{array}\\right| \\neq 0 \\\\\r\n&amp; \\Rightarrow(\\mathrm{k}-1)\\left(\\mathrm{k}^4-\\mathrm{k}^2\\right)-\\left(\\mathrm{k}^2-\\mathrm{k}\\right)\\left(\\mathrm{k}^2-1\\right) \\neq 0 \\\\\r\n&amp; \\Rightarrow(\\mathrm{k}-1) \\mathrm{k}^2\\left(\\mathrm{k}^2-1\\right)-\\mathrm{k}(\\mathrm{k}-1)\\left(\\mathrm{k}^2-1\\right) \\neq 0 \\\\\r\n&amp; \\Rightarrow(\\mathrm{k}-1)^2 \\mathrm{k}(\\mathrm{k}+1)(\\mathrm{k}-1) \\neq 0 \\\\\r\n&amp; \\therefore \\mathrm{k} \\neq 0,1,-1\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "k = 1",
+        "k = -1",
+        "k = 3",
+        "k = 0"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(K\\)\u003C/span\u003E&nbsp;এর কোন মানের জন্য&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\left|\\begin{array}{ccc}\r\n1 &amp; 1 &amp; 1 \\\\\r\n1 &amp; \\mathrm{k} &amp; \\mathrm{k}^2 \\\\\r\n1 &amp; \\mathrm{k}^2 &amp; \\mathrm{k}^4\r\n\\end{array}\\right|\\)\u003C/span\u003E নির্ণায়কটির মান শূন্য হবে না?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1598,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(3 x^2-4 y^2=12 \\Rightarrow(6 x-8 y) \\frac{d y}{d x}=0 \\Rightarrow \\frac{d y}{d x}=\\frac{3 x}{4 y}\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore(4,3)\\)\u003C/span\u003E&nbsp;বিন্দুতে, স্পর্শকের ঢাল,&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\frac{d y}{d x}=\\frac{3.4}{4.3}=1\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(-1\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(1\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{3}{4}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{4}{3}\\)\u003C/span\u003E"
+      ],
+      "question": "(4,3) বিন্দুতে 3x\u003Csup\u003E2\u003C/sup\u003E - 4y\u003Csup\u003E2\u003C/sup\u003E = 12 অধিবৃত্তের স্পর্শকের ঢালের মান-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1714,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(z=1-\\frac{1}{1-\\frac{i}{1+i}}=1-\\frac{1}{\\frac{1}{1+i}}=1-(1+i)=-i\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;মডুলাস&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(=\\sqrt{(-1)^2}=1\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;আর্গুমেন্ট&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(=\\tan ^{-1} \\frac{-1}{0}=\\frac{3 \\pi}{2}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(1,0\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(1, \\frac{\\pi}{2}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(1, \\pi\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(1, \\frac{3 \\pi}{2}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(z=1-\\frac{i}{1-\\frac{1}{1+i}}\\)\u003C/span\u003E&nbsp;জটিল সংখ্যাটির মডুলাস ও আর্গুমেন্ট-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1764,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\left(\\mathrm{x}_1, \\mathrm{y}_1\\right)\\)\u003C/span\u003E&nbsp;এবং&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\left(x_2, y_2\\right)\\)\u003C/span\u003E বিন্দুদ্বয়ের সংযোগ রেখাকে&nbsp;\u003Cspan class=\"math-tex\"\u003E\\((\\mathrm{x}, \\mathrm{y})\\)\u003C/span\u003E বিন্দুটি&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(m_1: m_2\\)\u003C/span\u003E অনুপাতে অন্তঃস্থভাবে বিভক্ত করলে, ঐ বিভক্তি বিন্দুর স্থানাংক-\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\((x, y) \\equiv\\left(\\frac{m_1 x_2+m_2 x_1}{m_1+m_2}, \\frac{m_1 y_2+m_2 y_1}{m_1+m_2}\\right)\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;অন্তর্বিভক্তি বিন্দুর স্থানাংক&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\left(\\frac{3 \\times 9+5 \\times 1}{3+5}, \\frac{3 \\times 12+5 \\times 4}{3+5}\\right)=(4,7)\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "(7, 4)",
+        "(4, 7)",
+        "(5, 8)",
+        "(8, 5)"
+      ],
+      "question": "(1, 4) এবং (9, 12) বিন্দুদ্বয়ের সংযোজক রেখা যে বিন্দুতে 3 : 5 অনুপাতে অন্তর্বিভক্ত হয়, তার স্থানাঙ্ক-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1779,
+      "answer": "OptionC",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\lim _{x \\rightarrow \\infty} \\frac{x^2+6 x}{2 x^2+5}=\\)\u003C/span\u003E&nbsp;সর্বোচ্চ পাওয়ারের সহগ/সর্বোচ্চ পাওয়ারের সহগ = 1/2\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(0\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{3}{2}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{2}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(1\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\lim _{x \\rightarrow \\infty} \\frac{x^2+6 x}{2 x^2+5}=?\\)\u003C/span\u003E",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1941,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(1-\\frac{1}{2}+\\left(\\frac{1}{2}\\right)^2-\\left(\\frac{1}{2}\\right)^3+\\left(\\frac{1}{2}\\right)^4-\\ldots=\\left(1+\\frac{1}{2}\\right)^{-1}=\\frac{2}{3}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{2}{3}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{4}{3}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(2\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{3}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(1-\\frac{1}{2}+\\frac{1}{2^2}-\\frac{1}{2^3}+\\frac{1}{2^4}-\\frac{1}{2^5} \\ldots \\ldots \\ldots \\text { to infinity }=\\text { ? }\\)\u003C/span\u003E",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2240,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003Eপ্রদত্ত বৃত্তের কেন্দ্র (4, 1) এবং প্রদত্ত রেখাটি বৃত্তটিকে স্পর্শ করলে,\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n&amp; \\pm \\frac{3.4+2 \\cdot 1+k}{\\sqrt{3^2+2^2}}=\\sqrt{(-4)^2+(-1)^2-4} \\\\\r\n&amp; \\Rightarrow \\pm \\frac{14+k}{\\sqrt{13}}=\\sqrt{13} \\Rightarrow k=-1,-27\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "1",
+        "27",
+        "5",
+        "-1"
+      ],
+      "question": "3x + 2y + k = 0 রেখাটি x\u003Csup\u003E2\u003C/sup\u003E + y\u003Csup\u003E2\u003C/sup\u003E &ndash; 8x &ndash; 2y + 4 = 0 বৃত্তকে স্পর্শ করলে k এর একটি মান-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2277,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\frac{i+i^{-1}}{i-i^{-1}}=\\frac{i-i}{i+i}=0\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "0",
+        "-2i",
+        "2i",
+        "2"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{i}^2=-1\\)\u003C/span\u003E&nbsp;হলে&nbsp;এর মান কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2286,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n\\left(1-\\omega+\\omega^2\\right)^2+\\left(1+\\omega-\\omega^2\\right)^2 &amp; =(-2 \\omega)^2+\\left(-2 \\omega^2\\right)^2 \\\\\r\n&amp; =4 \\omega^2+4 \\omega^4=-4\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "-4",
+        "4",
+        "-3",
+        "3"
+      ],
+      "question": "যদি&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\omega\\)\u003C/span\u003E এককের একটি কাল্পনিক জটিল ঘনমূল হয়, তবে&nbsp;\u003Cspan class=\"math-tex\"\u003E\\((1-\\omega+\\)\u003C/span\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\left.\\omega^2\\right)^2+\\left(1+\\omega-\\omega^2\\right)^2=?\\)\u003C/span\u003E",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1439,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:\u003C/strong\u003E কার্তেসীয় স্থানাংক:&nbsp;\u003Cspan class=\"math-tex\"\u003E\\( x=r \\cos \\theta=c \\cdot \\cos (\\pi)=-c \r\n\r\n\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\u003Cspan class=\"math-tex\"\u003E\\( y=r \\sin \\theta=c \\cdot \\sin (\\pi)=0\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;কার্তেসীয় স্থানাংক&nbsp;\u003Cspan class=\"math-tex\"\u003E\\((-c, 0)\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "(- 1, 0)",
+        "(- c, 0)",
+        "(c, - c)",
+        "(- c, c)"
+      ],
+      "question": "কোনো বিন্দুর পোলার স্থানাঙ্ক (c, &pi;) হলে বিন্দুটির কার্তেসীয় স্থানাঙ্ক কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1440,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:\u003C/strong\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cstrong\u003E\u003Cspan class=\"math-tex\"\u003E\\(y^2=8 x+2 y-9 \\Rightarrow y^2-2 y+1=8 x-9+1\\)\u003C/span\u003E\u003C/strong\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cstrong\u003E\u003Cspan class=\"math-tex\"\u003E\\( \\Rightarrow(y-1)^2=8(x-1) \\Rightarrow(y-1)^2=4.2(x-1)\\)\u003C/span\u003E\u003C/strong\u003E\u003C/p\u003E\n\n\u003Cp\u003Eএখানে, উপকেন্দ্র&nbsp;\u003Cspan class=\"math-tex\"\u003E\\((\\mathrm{x}, \\mathrm{y})=(\\mathrm{a}, 0)\\)\u003C/span\u003E&nbsp;\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore x-1=2 \\Rightarrow x=3 \\)\u003C/span\u003E&nbsp;&nbsp;এবং&nbsp;\u003Cspan class=\"math-tex\"\u003E\\( y-1=0 \\Rightarrow y=1\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003Eঅর্থাৎ, উপকেন্দ্র \u003Cspan class=\"math-tex\"\u003E\\((3, 1)\\)\u003C/span\u003E\u003C/p\u003E\n",
+      "options": [
+        "(3, 1)",
+        "(3, 0)",
+        "(-1, 1)",
+        "(2, 0)"
+      ],
+      "question": "y\u003Csup\u003E2\u003C/sup\u003E&nbsp;=&nbsp;8x + 2y - 9 পরাবৃত্তটির উপকেন্দ্রের স্থানাঙ্ক কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1645,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eকিছু গুরুত্বপূর্ণ সমীকরণ-\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\text { 1. } e^x=1+x+\\frac{x^2}{2 !}+\\frac{x^3}{3 !}+\\ldots \\ldots \\ldots \\infty\\)\u003C/span\u003E\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\text { 2. } \\mathrm{e}^{-\\mathrm{x}}=1-\\mathrm{x}+\\frac{\\mathrm{x}^2}{2 !}-\\frac{\\mathrm{x}^3}{3 !}+\\ldots \\ldots \\ldots \\infty\\)\u003C/span\u003E\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\text { 3. } \\ln (1+x)=x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\frac{x^4}{4}+\\ldots \\ldots \\ldots 1&lt;x \\leq 1\\)\u003C/span\u003E\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\text { 4. } \\ln (1-x)=--x-\\frac{x^2}{2}-\\frac{x^3}{3}-\\frac{x^4}{4}-\\ldots \\ldots \\ldots-1 \\leq x&lt;1\\)\u003C/span\u003E\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\text { 5. } \\frac{1}{2}\\left(e^x+e^{-x}\\right)=1+\\frac{x^2}{2 !}+\\frac{x^4}{4 !}+\\ldots \\ldots \\infty\\)\u003C/span\u003E\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\text { 6. } \\frac{1}{2}\\left(e^x-e^{-x}\\right)=x+\\frac{x^3}{3 !}+\\frac{x^5}{5 !}+\\ldots \\ldots \\ldots \\infty\\)\u003C/span\u003E\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\text { 7. } \\frac{1}{2} \\ln \\left|\\frac{1+x}{1-x}\\right|=x+\\frac{x^3}{3}+\\frac{x^5}{5}+\\ldots \\ldots \\ldots \\infty\\)\u003C/span\u003E&nbsp;[&nbsp;যেখানে&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(x \\in(-1,1)\\)\u003C/span\u003E&nbsp;]\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(x-\\frac{x^3}{3 !}+\\frac{x^5}{5 !}-\\ldots\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(x+\\frac{x^3}{3 !}+\\frac{x^5}{5 !}+\\ldots\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(1+x+\\frac{x^3}{3 !}+\\frac{x^5}{5 !}+\\ldots\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(-x-\\frac{x^3}{3 !}-\\frac{x^5}{5 !}-\\ldots\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{2}\\left(e^x-e^{-x}\\right)\\)\u003C/span\u003E&nbsp;ধারাটির বিস্তৃতি কি?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1663,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003E১ম ও শেষে T থাকতে হবে তাহলে অবশিষ্ট বর্ণ 9 টি যার মধ্যে M 2টি, A 2টি\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;সাজানো যাবে&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(=\\frac{9 !}{2 ! \\times 2 !}=\\frac{9 \\times 8 \\times 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2}{4}\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(=90720\\)\u003C/span\u003Eউপায়ে\u003C/p\u003E\r\n",
+      "options": [
+        "10080",
+        "9680",
+        "50720",
+        "90720"
+      ],
+      "question": "&#39;MATHEMATICS&#39; শব্দটির বর্ণগুলিকে কত রকমে সাজানো যাবে যেখানে প্রথম ও শেষ স্থানে &#39;&#39;T&#39; থাকবে?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1713,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003Eযে বিন্দুটি&nbsp;\u003Cspan class=\"math-tex\"\u003E\\((x-2)^2+(y-3)^2=16\\)\u003C/span\u003E এবং&nbsp;\u003Cspan class=\"math-tex\"\u003E\\((x-2)^2+\\)\u003C/span\u003E \u003Cspan class=\"math-tex\"\u003E\\((y-10)^2=9\\)\u003C/span\u003Eবৃত্তদ্বয়কে সিদ্ধ করে, সেটি স্পর্শবিন্দু।\u003C/p\u003E\r\n\r\n\u003Cp\u003Eঅপশন (D) হতে, (2, 7) বিন্দুটি উপরোক্ত বৃত্তদ্বয়কে সিদ্ধ করে।\u003C/p\u003E\r\n",
+      "options": [
+        "(2, 3)&nbsp;",
+        "(16, 9)&nbsp;",
+        "(2, 10)&nbsp;",
+        "(2, 7)"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\((x-2)^2+(y-3)^2=16\\)\u003C/span\u003E&nbsp;এবং&nbsp;\u003Cspan class=\"math-tex\"\u003E\\((x-2)^2+(y-10)^2=9\\)\u003C/span\u003E&nbsp;বৃত্তদ্বয়ের স্পর্শবিন্দুর স্থানাংক-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2288,
+      "answer": "OptionA",
+      "explanation": "",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(2 \\sqrt{\\tan x}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\sqrt{\\tan x} \\ln \\left(\\cos ^2 x\\right)\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\sin x \\sqrt{\\tan x}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{2}{3}(\\tan x)^{\\frac{3}{2}}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{\\cos ^2 x \\sqrt{\\tan x}}\\)\u003C/span\u003E&nbsp;এর একটি অনির্দিষ্ট যোগজ-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2325,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(-7&lt;x&lt;-1\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n&amp; \\Rightarrow-7+4&lt;x+4&lt;-1+4 \\\\\r\n&amp; \\Rightarrow-3&lt;x+4&lt;3 \\Rightarrow|x+4|&lt;3\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "|x + 4| &lt; 3",
+        "|x - 4| &lt; 3",
+        "|x + 4| &lt; 4",
+        "|x - 3| &lt; 3"
+      ],
+      "question": "-7 &lt; x &lt; -1 কে পরম মানের সাহায্যে লিখলে দাঁড়ায়-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2328,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003Ex\u003Csup\u003E2&nbsp;\u003C/sup\u003E+ y\u003Csup\u003E2\u003C/sup\u003E + 8x - 4y + c = 0 বৃত্তটি x অক্ষকে স্পর্শ করে।\u003Cbr /\u003E\r\n\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;c = g\u003Csup\u003E2\u003C/sup\u003E = 4\u003Csup\u003E2\u003C/sup\u003E = 16\u003C/p\u003E\r\n",
+      "options": [
+        "16",
+        "2",
+        "4",
+        "-16"
+      ],
+      "question": "x\u003Csup\u003E2&nbsp;\u003C/sup\u003E+y\u003Csup\u003E2&nbsp;\u003C/sup\u003E+ 8x - 4y + c = 10 বৃত্তটি x অক্ষকে স্পর্শ করলে c এর মান-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 2449,
+      "answer": "OptionD",
+      "explanation": "",
+      "options": [
+        "x\u003Csup\u003E2\u003C/sup\u003E + y\u003Csup\u003E2&nbsp;\u003C/sup\u003E- 4x + 14y = 0",
+        "x\u003Csup\u003E2&nbsp;\u003C/sup\u003E+ y\u003Csup\u003E2&nbsp;\u003C/sup\u003E- 4x - 14y = 0",
+        "x\u003Csup\u003E2\u003C/sup\u003E + y\u003Csup\u003E2\u003C/sup\u003E + 4x + 14y = 0",
+        "x\u003Csup\u003E2\u003C/sup\u003E + y\u003Csup\u003E2\u003C/sup\u003E + 4x - 14y = 0"
+      ],
+      "question": "(-9, 9) এবং (5, 5) বিন্দুদ্বয়ের সংযোজক রেখাংশকে ব্যাস ধরে অংকিত বৃত্তের সমীকরণ-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3717,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n\\left|\\begin{array}{ccc}\n1 &amp; 3 &amp; 2 \\\\\n2 &amp; 0 &amp; 3 \\\\\n1 &amp; -1 &amp; \\mathrm{p}\n\\end{array}\\right|=0\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n\\begin{aligned}\n&amp; \\Rightarrow 1(0+3)-3(2 P-3)+2(-2-0)=0 \\\\\n&amp; \\Rightarrow 3-6 P+9-4=0 \\Rightarrow 6 P=8 \\Rightarrow P=\\frac{8}{6}=\\frac{4}{3}\n\\end{aligned}\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{\\frac{4}{3}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{\\frac{3}{4}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{\\frac{5}{3}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{\\frac{3}{5}}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\left[\\begin{array}{ccc} 1 &amp; 3 &amp; 2 \\\\ 2 &amp; 0 &amp; 3 \\\\ 1 &amp; -1 &amp; P \\end{array}\\right]\\)\u003C/span\u003E&nbsp;ম্যাট্রিক্সটি ব্যতিক্রমী হলে P এর মান কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3718,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003Eলম্বরেখার সমীকরণ,&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n3(x-1)+2(y-1)=0\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n\\Rightarrow 3 x+2 y-5=0\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{3x+2y - 5 = 0}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{3x+2y + 5 = 0}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{3x-2y - 1 = 0}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{-2x+3y + 1 = 0}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{(1,1)}\\)\u003C/span\u003E&nbsp;বিন্দুগামী ও \u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{2x-3y - 5 = 0}\\)\u003C/span\u003E রেখার উপর লম্বরেখার সমীকরণ কোনটি?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3725,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\ny^2+2 y+1=-4 x+8+1 \\Rightarrow(y+1)^2\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(=-4\\left(x-\\frac{9}{4}\\right)\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003Eশীর্ষবিন্দু&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n=\\left(\\frac{9}{4},-1\\right)\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\left(\\frac{9}{4},-1\\right)\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\left(-\\frac{9}{4},-1\\right)\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{(0,2)}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{(2,0)}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{y^2 + 4x + 2y-৪ = 0}\\)\u003C/span\u003E পরাবৃত্তের শীর্ষবিন্দু কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3726,
+      "answer": "OptionC",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\ny^2=4 x=4.1 x, a=1\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\ny=x\n\\end{equation}\\)\u003C/span\u003E&nbsp;এ&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n\\mathrm{m}=1\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003Eক্ষেত্রফল&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\n=\\frac{8 \\mathrm{a}^2}{3 \\mathrm{~m}^3}=\\frac{8 \\times 1^2}{3 \\times 1^3}=\\frac{8}{3}\n\\end{equation}\\)\u003C/span\u003E বর্গ একক\u003C/p\u003E\n",
+      "options": [
+        "3",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{\\frac{4}{3}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{\\frac{8}{3}}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{\\frac{5}{3}}\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{y^2 = 4x}\\)\u003C/span\u003E পরাবৃত্ত এবং \u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{y = x }\\)\u003C/span\u003E&nbsp;সরলরেখা দ্বারা আবদ্ধ ক্ষেত্রের ক্ষেত্রফল কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3727,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{equation}\nS_4=\\frac{1}{2} g(2 \\times 4-1)=\\frac{1}{2} \\times 9.8 \\times 7\n\\end{equation}\\)\u003C/span\u003E\u003C/p\u003E\n\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(=34.3 \\mathrm{~m}\\)\u003C/span\u003E\u003C/p\u003E\n",
+      "options": [
+        "78.4 m",
+        "44.1 m",
+        "39.2 m",
+        "34.3 m"
+      ],
+      "question": "মুক্তভাবে পড়ন্ত কোনো বস্তু চতুর্থ সেকেন্ডে কত দূরত্ব অতিক্রম করবে?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3729,
+      "answer": "OptionA",
+      "explanation": "\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{x ^ 2}\\)\u003C/span\u003E ও \u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{y ^ 2}\\)\u003C/span\u003E এর সহগদ্বয় বিপরীত চিহ্ন যুক্ত এবং xy পদ অনুপস্থিত। অতএব কনিকটি অধিবৃত্ত।\u003C/p\u003E\n",
+      "options": [
+        "অধিবৃত্ত (hyperbola)",
+        "বৃত্ত (circle)",
+        "পরাবৃত্ত (parabola)",
+        "উপবৃত্ত (ellipse)"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{16y^2-9x^2 + 18x + 64y + 199 = 0}\\)\u003C/span\u003E দ্বারা নির্দেশিত কণিক কোনটি?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 3160,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003Ef(x) এর ডোমেন এবং \u003Cspan class=\"math-tex\"\u003E\\(\\mathrm{f}^{-1}(\\mathrm{x})\\)\u003C/span\u003E এর কোডোমেন একই।\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(f(x)=\\frac{2 x+1}{x-3}\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003Ef(x) বাস্তব হতে হলে,\u003Cspan class=\"math-tex\"\u003E\\(x-3 \\neq 0\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\Rightarrow x \\neq 3 \\therefore f(x)\\)\u003C/span\u003E&nbsp;এর ডোমেন&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(=\\mathbb{R}-\\{3\\}=f^{-1}(x)\\)\u003C/span\u003E&nbsp;এর কোডোমেন\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathbb{R}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\((3, \\infty)\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\((-\\infty, 3)\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\mathbb{R}-\\{3\\}\\)\u003C/span\u003E"
+      ],
+      "question": "যদি&nbsp;&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(f(x)=\\frac{2 x+1}{x-3}\\)\u003C/span\u003E&nbsp;হয়, তবে\u003Cspan class=\"math-tex\"\u003E\\(f^{-1}(x) \\)\u003C/span\u003E এর কোডোমেন কোনটি?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1436,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{\\mathrm{x}}+\\mathrm{a}-\\mathrm{bx}=0 \\Rightarrow \\mathrm{bx}^2-\\mathrm{ax}-1=0\\)\u003C/span\u003E\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003Eএখন, মূলদ্বয় সমান হলে, নিশ্চায়ক&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n=0 &amp; \\Rightarrow(-a)^2-4 \\cdot b \\cdot(-1)=0 \\\\\r\n&amp; \\Rightarrow a^2+4 b=0\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(a^2-4 b=0\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(b^2-4 a=0\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(b^2+4 a=0\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(a^2+4 b=0\\)\u003C/span\u003E"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{x}+a-b x\\)\u003C/span\u003E&nbsp;সমীকরণের মূলদ্বয় সমান হলে কোনটি সঠিক?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1438,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n&amp;f(x)=\\frac{x}{x^2+1} \\\\\r\n&amp; \\Rightarrow f^{\\prime}(x)=\\frac{\\left(x^2+1\\right) \\cdot 1-x \\cdot 2 x}{\\left(x^2+1\\right)^2}=\\frac{\\left(1-x^2\\right)}{\\left(x^2+1\\right)^2}\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003Eফাংশন ক্রমবর্ধমান হবে যদি,\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n&amp; \\mathrm{f}^{\\prime}(\\mathrm{x})&gt;0 \\Rightarrow \\frac{1-\\mathrm{x}^2}{\\left(\\mathrm{x}^2+1\\right)^2}&gt;0 \\\\\r\n&amp; \\Rightarrow 1-\\mathrm{x}^2&gt;0 \\Rightarrow \\mathrm{x}^2&lt;1 \\Rightarrow-1&lt;\\mathrm{x}&lt;1 \\Rightarrow \\mathrm{x}=(-1,1)\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "(-&infin;,0)",
+        "(-1,1)",
+        "(0,&infin;)",
+        "(-1,&infin;)"
+      ],
+      "question": "কোন ব্যবধিতে&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(f(x)=\\frac{x}{x^2+1}\\)\u003C/span\u003E&nbsp;ক্রমবর্ধমান?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1443,
+      "answer": "OptionB",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:&nbsp;\u003C/strong\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003Eএখানে, \u003Cspan class=\"math-tex\"\u003E\\(y=\\left(\\cos ^{-1} x\\right)^2\\)\u003C/span\u003E&nbsp;হলে,\u003C/p\u003E\r\n\r\n\u003Cp\u003E&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n&amp; \\frac{d y}{d x}=2 \\cos ^{-1} x \\cdot \\frac{-1}{\\sqrt{1-x^2}} \\ldots \\ldots . .(i) \\\\\r\n\\Rightarrow &amp; \\frac{d^2 y}{d x^2}=\\frac{\\sqrt{1-x^2} \\frac{2}{\\sqrt{1-x^2}}+2 \\cos ^{-1} x \\cdot \\frac{1}{2 \\sqrt{1-x^2}}(-2 x)}{1-x^2} \\\\\r\n\\Rightarrow &amp; \\frac{d^2 y}{d x^2}=\\frac{2-\\frac{2 x \\cos ^{-1} x}{\\sqrt{1-x^2}}}{1-x^2}\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E&nbsp;&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\Rightarrow\\left(1-\\mathrm{x}^2\\right) \\frac{\\mathrm{d}^2 \\mathrm{y}}{\\mathrm{dx}^2}=2+\\mathrm{x} \\frac{\\mathrm{dy}}{\\mathrm{dx}})\\)\u003C/span\u003E&nbsp;&nbsp;[(i) নং হতে]\u003C/p\u003E\r\n\r\n\u003Cp\u003E&nbsp;&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\Rightarrow\\left(1-\\mathrm{x}^2\\right) \\frac{\\mathrm{d}^2 \\mathrm{y}}{\\mathrm{dx}^2}-\\mathrm{x} \\frac{\\mathrm{dy}}{\\mathrm{dx}}=2\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(y=\\cos ^{-1} x\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(y=\\left(\\cos ^{-1} x\\right)^2\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(y=\\sin ^{-1} x\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(y=\\tan ^{-1} x\\)\u003C/span\u003E"
+      ],
+      "question": "কোন ফাংশনটির জন্য&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\left(1-x^2\\right) \\frac{d^2 y}{d x^2}-x \\frac{d y}{d x}=2\\)\u003C/span\u003E সত্য?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1448,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:&nbsp;\u003C/strong\u003E3N ও 2N বলদ্বয়ের লব্ধি R হলে,\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(R^2=3^2+2^2+2.3 .2 \\cos \\alpha \\\\\r\n\\Rightarrow R^2=13+12 \\cos \\alpha............(i)\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003Eআবার, 6N এবং 2N বলদ্বয়ের লব্ধি 2R হলে,\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\begin{aligned}\r\n&amp; 4 R^2=6^2+2^2+2.6 .2 \\cos \\alpha \\\\\r\n&amp; \\Rightarrow 4(13+12 \\cos \\alpha)=40+24 \\cos \\alpha \\\\\r\n&amp; \\Rightarrow 24 \\cos \\alpha=-12 \\\\\r\n&amp; \\Rightarrow \\cos \\alpha=-\\frac{1}{2}=\\cos 120^{\\circ} \\\\\r\n&amp; \\therefore \\alpha=120^{\\circ}\r\n\\end{aligned}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "30&deg;",
+        "45&deg;",
+        "65&deg;",
+        "120&deg;"
+      ],
+      "question": "3N ও 2N মানের দুইটি বলের লব্ধি R। প্রথম বলের মান দ্বিগুণ করলে লব্ধির মানও দ্বিগুণ হয়। বলদ্বয়ের মধ্যবর্তী কোণের মান হবে-",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1452,
+      "answer": "OptionD",
+      "explanation": "\u003Cp\u003Eতিনটি ছক্কা একত্রে নিক্ষেপ করলে মোট নমুনা = 6\u003Csup\u003E3\u003C/sup\u003E = 216 একই সংখ্যার নমুনা = 6টি [(1, 1, 1), (2, 2, 2), (3, 3, 3), (4, 4, 4), (5, 5, 5), (6, 6, 6)]\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;একই সংখ্যা পাওয়ার সম্ভাবনা =&nbsp;&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(\\frac{6}{216} = \\frac{1}{36}\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{18}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{6}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{216}\\)\u003C/span\u003E",
+        "\u003Cspan class=\"math-tex\"\u003E\\(\\frac{1}{36}\\)\u003C/span\u003E"
+      ],
+      "question": "তিনটি ছক্কা একবার নিক্ষেপ করা হলে তিনটিতেই একই সংখ্যা পাওয়ার সম্ভাবনা কত?",
+      "subject": "উচ্চতর গণিত"
+    },
+    {
+      "ID": 1454,
+      "answer": "OptionC",
+      "explanation": "\u003Cp\u003E\u003Cstrong\u003Eসমাধান:\u003C/strong\u003E&nbsp;ফাংশনটি সংজ্ঞায়িত হবে যদি,&nbsp;\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(x-2 \\geq 0 \\Rightarrow x \\geq 2\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003Eএবং&nbsp;\u003Cspan class=\"math-tex\"\u003E\\( \\sqrt{x-2} \\leq 3 \\Rightarrow x-2 \\leq 9 \\Rightarrow x \\leq 11\\)\u003C/span\u003E\u003C/p\u003E\r\n\r\n\u003Cp\u003E\u003Cspan class=\"math-tex\"\u003E\\(\\therefore\\)\u003C/span\u003E&nbsp;ডোমেন&nbsp;&nbsp;\u003Cspan class=\"math-tex\"\u003E\\(=2 \\leq x \\leq 11=[2,11]\\)\u003C/span\u003E\u003C/p\u003E\r\n",
+      "options": [
+        "x &le; 3",
+        "x &ge; 2",
+        "2 &le; x &le; 11",
+        "2 &le; x &le;3"
+      ],
+      "question": "\u003Cspan class=\"math-tex\"\u003E\\(f(x)=\\sqrt{3-\\sqrt{x-2}}\\)\u003C/span\u003E&nbsp;ফাংশনটির ডোমেন কত?",
+      "subject": "উচ্চতর গণিত"
+    }
+  ]
+}
