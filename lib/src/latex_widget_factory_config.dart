@@ -36,6 +36,8 @@ class LatexHtmlWidgetFactoryConfig {
     this.enableFallback = true,
     this.mathJaxSupported = false,
     this.responsiveLayout = true,
+    this.primaryScaleInline = 1.0,
+    this.primaryScaleBlock = 1.0,
     this.fallbackScaleInline = 0.86,
     this.fallbackScaleBlock = 0.92,
     this.fallbackVerticalPadding = 2.0,
@@ -137,6 +139,18 @@ class LatexHtmlWidgetFactoryConfig {
   /// When true, oversized formulas are wrapped in SingleChildScrollView(Axis.horizontal)
   /// to prevent RenderLine overflow exceptions on narrow screens.
   final bool responsiveLayout;
+  
+  /// Scale applied to inline formulas rendered by the primary `flutter_math_fork` renderer.
+  ///
+  /// Default: 1.0
+  /// Useful for visually matching math glyph metrics with surrounding text.
+  final double primaryScaleInline;
+
+  /// Scale applied to display/block formulas rendered by the primary `flutter_math_fork` renderer.
+  ///
+  /// Default: 1.0
+  /// Useful for visually matching display math with surrounding text.
+  final double primaryScaleBlock;
 
   /// Scale applied to inline fallback formulas rendered by `flutter_tex`.
   ///
@@ -174,6 +188,8 @@ class LatexHtmlWidgetFactoryConfig {
     bool? enableFallback,
     bool? mathJaxSupported,
     bool? responsiveLayout,
+    double? primaryScaleInline,
+    double? primaryScaleBlock,
     double? fallbackScaleInline,
     double? fallbackScaleBlock,
     double? fallbackVerticalPadding,
@@ -189,6 +205,8 @@ class LatexHtmlWidgetFactoryConfig {
       enableFallback: enableFallback ?? this.enableFallback,
       mathJaxSupported: mathJaxSupported ?? this.mathJaxSupported,
       responsiveLayout: responsiveLayout ?? this.responsiveLayout,
+      primaryScaleInline: primaryScaleInline ?? this.primaryScaleInline,
+      primaryScaleBlock: primaryScaleBlock ?? this.primaryScaleBlock,
       fallbackScaleInline: fallbackScaleInline ?? this.fallbackScaleInline,
       fallbackScaleBlock: fallbackScaleBlock ?? this.fallbackScaleBlock,
       fallbackVerticalPadding: fallbackVerticalPadding ?? this.fallbackVerticalPadding,
@@ -203,6 +221,8 @@ class LatexHtmlWidgetFactoryConfig {
       'enableFallback: $enableFallback, '
       'mathJaxSupported: $mathJaxSupported, '
       'responsiveLayout: $responsiveLayout, '
+      'primaryScaleInline: $primaryScaleInline, '
+      'primaryScaleBlock: $primaryScaleBlock, '
       'fallbackScaleInline: $fallbackScaleInline, '
       'fallbackScaleBlock: $fallbackScaleBlock'
       ')';

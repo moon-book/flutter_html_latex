@@ -21,6 +21,8 @@ class HtmlLatex extends StatelessWidget {
     this.enableFallback,
     this.mathJaxSupported,
     this.responsiveLayout,
+    this.primaryScaleInline,
+    this.primaryScaleBlock,
     this.fallbackScaleInline,
     this.fallbackScaleBlock,
     this.fallbackVerticalPadding,
@@ -54,6 +56,12 @@ class HtmlLatex extends StatelessWidget {
 
   /// Overrides config's responsive behavior when provided.
   final bool? responsiveLayout;
+  
+  /// Overrides config's inline primary renderer scale when provided.
+  final double? primaryScaleInline;
+
+  /// Overrides config's block primary renderer scale when provided.
+  final double? primaryScaleBlock;
 
   /// Overrides config's inline fallback scale when provided.
   final double? fallbackScaleInline;
@@ -77,6 +85,8 @@ class HtmlLatex extends StatelessWidget {
       enableFallback: enableFallback ?? base.enableFallback,
       mathJaxSupported: mathJaxSupported ?? base.mathJaxSupported,
       responsiveLayout: responsiveLayout ?? base.responsiveLayout,
+      primaryScaleInline: primaryScaleInline ?? base.primaryScaleInline,
+      primaryScaleBlock: primaryScaleBlock ?? base.primaryScaleBlock,
       fallbackScaleInline: fallbackScaleInline ?? base.fallbackScaleInline,
       fallbackScaleBlock: fallbackScaleBlock ?? base.fallbackScaleBlock,
       fallbackVerticalPadding: fallbackVerticalPadding ?? base.fallbackVerticalPadding,
@@ -100,6 +110,7 @@ class HtmlLatex extends StatelessWidget {
     return HtmlWidget(
       data,
       factoryBuilder: () => LatexHtmlWidgetFactory(config: mergedConfig),
+      textStyle: style,
     );
   }
 

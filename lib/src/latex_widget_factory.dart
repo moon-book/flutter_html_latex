@@ -125,16 +125,17 @@ class _MathWidgetBuilder {
         final width = constraints.maxWidth.isFinite
             ? constraints.maxWidth
             : MediaQuery.sizeOf(context).width;
-        final dynamicWidth = _calculateLatexWidth(parsed.tex, fontSize, width);
         // Check for custom math builder first
         final customWidget = config.customMathBuilder?.call(parsed.tex, styleData);
         if (customWidget != null) {
+          final dynamicWidth = _calculateLatexWidth(parsed.tex, fontSize, width);
           return config.responsiveLayout
               ? _wrapResponsive(child: customWidget, maxWidth: width, contentMaxWidth: dynamicWidth)
               : customWidget;
         }
 
         if (config.enableFallback && _shouldPreferMath2Svg(parsed.tex, isDisplayMode: displayMode)) {
+          final dynamicWidth = _calculateLatexWidth(parsed.tex, fontSize, width);
           final earlyFallback = _buildMath2SvgFallback(
             tex: parsed.tex,
             rawText: rawText,
@@ -156,11 +157,13 @@ class _MathWidgetBuilder {
               : earlyFallback;
         }
 
+        final primaryScale = displayMode ? config.primaryScaleBlock : config.primaryScaleInline;
+        final mathFontSize = fontSize * primaryScale;
+        final dynamicWidth = _calculateLatexWidth(parsed.tex, mathFontSize, width);
         final mathOptions = MathOptions(
-          sizeUnderTextStyle: MathSize.large,
           style: displayMode ? MathStyle.display : MathStyle.text,
           color: color,
-          fontSize: fontSize,
+          fontSize: mathFontSize,
         );
 
         final widget = Math.tex(
@@ -169,7 +172,7 @@ class _MathWidgetBuilder {
           textScaleFactor: 1,
           settings: const TexParserSettings(strict: Strict.ignore),
           options: mathOptions,
-          textStyle: styleData.toTextStyle(),
+          textStyle: styleData.toTextStyle().copyWith(fontSize: mathFontSize),
           onErrorFallback: (error) => _buildMathErrorFallback(
             error: error,
             tex: parsed.tex,

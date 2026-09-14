@@ -40,6 +40,79 @@ void main() {
     expect(find.text('x^2+y^2'), findsNothing);
   });
 
+  testWidgets('keeps inline math font size equal to surrounding style', (
+    tester,
+  ) async {
+    const html = '<span class="math-inline">\\(x+y\\)</span>';
+    const textStyle = TextStyle(fontSize: 20);
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: HtmlLatex(
+            html,
+            style: textStyle,
+          ),
+        ),
+      ),
+    );
+
+    final math = tester.widget<Math>(find.byType(Math));
+    expect(math.options, isNotNull);
+    expect(math.options!.fontSize, 20);
+    expect(math.options!.sizeUnderTextStyle, MathSize.normalsize);
+  });
+
+  testWidgets('applies primary inline scale to Math.tex font size', (
+    tester,
+  ) async {
+    const html = '<span class="math-inline">\\(x+y\\)</span>';
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: HtmlLatex(
+            html,
+            style: TextStyle(fontSize: 20),
+            primaryScaleInline: 1.1,
+          ),
+        ),
+      ),
+    );
+
+    final math = tester.widget<Math>(find.byType(Math));
+    expect(math.options, isNotNull);
+    expect(math.options!.fontSize, 22);
+    expect(math.textStyle?.fontSize, 22);
+  });
+  
+  testWidgets('applies HtmlLatex text style to normal html text', (
+    tester,
+  ) async {
+    const textStyle = TextStyle(fontSize: 22);
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: HtmlLatex(
+            '<p>plain text</p>',
+            style: textStyle,
+          ),
+        ),
+      ),
+    );
+
+    final richText = tester.widget<RichText>(
+      find.byWidgetPredicate(
+        (widget) =>
+            widget is RichText && widget.text.toPlainText().contains('plain text'),
+      ),
+    );
+
+    final span = richText.text as TextSpan;
+    expect(span.style?.fontSize, 22);
+  });
+
   testWidgets('falls back to text for empty delimiters', (tester) async {
     const html = '<span class="math-tex">\\(\\)</span>';
 
