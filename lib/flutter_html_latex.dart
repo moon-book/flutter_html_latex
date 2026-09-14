@@ -6,3 +6,4 @@ export 'src/latex_widget_factory_config.dart';
 export 'src/style_parser.dart';
 export 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart'
     show HtmlWidget, WidgetFactory;
+export 'src/helper/markdown_to_html.dart';
