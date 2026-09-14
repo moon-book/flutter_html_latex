@@ -22,8 +22,44 @@ void main() {
     expect(find.text('4.2-6.3'), findsNothing);
   });
 
+  testWidgets('renders math-inline span as Math widget', (tester) async {
+    const html = '<span class="math-inline">\\(x^2+y^2\\)</span>';
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: HtmlWidget(
+            html,
+            factoryBuilder: LatexHtmlWidgetFactory.new,
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Math), findsOneWidget);
+    expect(find.text('x^2+y^2'), findsNothing);
+  });
+
   testWidgets('falls back to text for empty delimiters', (tester) async {
     const html = '<span class="math-tex">\\(\\)</span>';
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: HtmlWidget(
+            html,
+            factoryBuilder: LatexHtmlWidgetFactory.new,
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Math), findsNothing);
+    expect(find.text(r'\(\)'), findsOneWidget);
+  });
+
+  testWidgets('falls back to text for empty inline delimiters', (tester) async {
+    const html = '<span class="math-inline">\\(\\)</span>';
 
     await tester.pumpWidget(
       const MaterialApp(

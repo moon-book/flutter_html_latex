@@ -55,9 +55,16 @@ class LatexHtmlWidgetFactory extends WidgetFactory {
       // Determine if this should be display mode
       bool forceDisplayMode = tree.element.classes.contains('math-display');
       bool forceInlineMode = tree.element.classes.contains('math-inline');
+      final inlineAlignment = _shouldCenterInlineMath(
+        rawText: tree.element.text,
+        forceInlineMode: forceInlineMode,
+          )
+          ? PlaceholderAlignment.middle
+          : PlaceholderAlignment.baseline;
 
       tree.register(
         BuildOp.inline(
+          alignment: inlineAlignment,
           onRenderInlineBlock: (mathTree, _) => _MathWidgetBuilder(
             config: config,
             tree: mathTree,
@@ -528,6 +535,18 @@ class _LatexPayload {
 
   final String tex;
   final bool displayMode;
+}
+
+bool _shouldCenterInlineMath({
+  required String rawText,
+  required bool forceInlineMode,
+}) {
+  if (!forceInlineMode) {
+    return false;
+  }
+
+  final parsed = _parseLatex(rawText);
+  return parsed != null && !parsed.displayMode;
 }
 
 _LatexPayload? _parseLatex(String rawText) {
