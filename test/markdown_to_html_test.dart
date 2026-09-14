@@ -2,6 +2,19 @@ import 'package:flutter_html_latex/src/helper/markdown_to_html.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  group('containsLatexMath', () {
+    test('detects supported inline and block latex delimiters', () {
+      expect(containsLatexMath(r'Gia tri $x + 1$'), isTrue);
+      expect(containsLatexMath(r'Gia tri \(x + 1\)'), isTrue);
+      expect(containsLatexMath(r'Cong thuc $$x + 1$$'), isTrue);
+      expect(containsLatexMath(r'Cong thuc \[x + 1\]'), isTrue);
+    });
+
+    test('ignores strings without latex math delimiters', () {
+      expect(containsLatexMath('Day la chuoi html/markdown binh thuong.'), isFalse);
+    });
+  });
+
   group('convertMarkdownToHtmlLatex', () {
     test('wraps inline latex for HtmlLatex rendering', () {
       const markdown = 'Kim loai K co so hieu nguyen tu la (\$Z = 19\$).';

@@ -14,6 +14,13 @@ String convertMarkdownToHtmlLatex(String markdown) {
   );
 }
 
+bool containsLatexMath(String input) {
+  return RegExp(r'\$\$[\s\S]+?\$\$').hasMatch(input) ||
+      RegExp(r'\\\[[\s\S]+?\\\]').hasMatch(input) ||
+      RegExp(r'(?<!\$)\$(?!\$)[\s\S]+?(?<!\$)\$(?!\$)').hasMatch(input) ||
+      RegExp(r'\\\([\s\S]+?\\\)').hasMatch(input);
+}
+
 String _convertMarkdownToHtml(
   String markdown, {
   required String Function(_MathExpression expression) mathBuilder,

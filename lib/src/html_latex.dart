@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
+import 'helper/markdown_to_html.dart';
 import 'latex_style_data.dart';
 import 'latex_widget_factory.dart';
 import 'latex_widget_factory_config.dart';
@@ -26,6 +27,7 @@ class HtmlLatex extends StatelessWidget {
     this.fallbackScaleInline,
     this.fallbackScaleBlock,
     this.fallbackVerticalPadding,
+    this.autoConvertLatex = true,
   });
 
   /// The HTML content to render.
@@ -56,7 +58,7 @@ class HtmlLatex extends StatelessWidget {
 
   /// Overrides config's responsive behavior when provided.
   final bool? responsiveLayout;
-  
+
   /// Overrides config's inline primary renderer scale when provided.
   final double? primaryScaleInline;
 
@@ -71,6 +73,11 @@ class HtmlLatex extends StatelessWidget {
 
   /// Overrides config's fallback vertical padding when provided.
   final double? fallbackVerticalPadding;
+
+  /// Converts markdown-style LaTeX delimiters to HtmlLatex math HTML when true.
+  ///
+  /// Conversion only runs when [data] contains supported math delimiters.
+  final bool autoConvertLatex;
 
   @override
   Widget build(BuildContext context) {
@@ -107,8 +114,12 @@ class HtmlLatex extends StatelessWidget {
       },
     );
 
+    final htmlData = autoConvertLatex && containsLatexMath(data)
+        ? convertMarkdownToHtmlLatex(data)
+        : data;
+
     return HtmlWidget(
-      data,
+      htmlData,
       factoryBuilder: () => LatexHtmlWidgetFactory(config: mergedConfig),
       textStyle: style,
     );

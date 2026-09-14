@@ -113,6 +113,60 @@ void main() {
     expect(span.style?.fontSize, 22);
   });
 
+  testWidgets('auto converts latex markdown when enabled', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: HtmlLatex(
+            r'Gia tri cua K la $Z = 19$.',
+            autoConvertLatex: true,
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(Math), findsOneWidget);
+    expect(find.text('Z = 19'), findsNothing);
+  });
+
+  testWidgets('does not auto convert latex markdown by default', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: HtmlLatex(r'Gia tri cua K la $Z = 19$.'),
+        ),
+      ),
+    );
+
+    expect(find.byType(Math), findsNothing);
+  });
+
+  testWidgets('skips markdown conversion when auto convert finds no latex', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: HtmlLatex(
+            '**plain markdown**',
+            autoConvertLatex: true,
+          ),
+        ),
+      ),
+    );
+
+    final richText = tester.widget<RichText>(
+      find.byWidgetPredicate(
+        (widget) =>
+            widget is RichText &&
+            widget.text.toPlainText().contains('**plain markdown**'),
+      ),
+    );
+
+    expect(richText.text.toPlainText(), contains('**plain markdown**'));
+    expect(find.byType(Math), findsNothing);
+  });
+
   testWidgets('falls back to text for empty delimiters', (tester) async {
     const html = '<span class="math-tex">\\(\\)</span>';
 
