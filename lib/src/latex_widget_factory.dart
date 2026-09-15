@@ -39,8 +39,7 @@ import 'style_parser.dart';
 /// ```
 class LatexHtmlWidgetFactory extends WidgetFactory {
   /// Creates a [LatexHtmlWidgetFactory] with optional customization config.
-  LatexHtmlWidgetFactory({LatexHtmlWidgetFactoryConfig? config})
-      : config = config ?? const LatexHtmlWidgetFactoryConfig();
+  LatexHtmlWidgetFactory({LatexHtmlWidgetFactoryConfig? config}) : config = config ?? const LatexHtmlWidgetFactoryConfig();
 
   /// The configuration for this factory instance.
   final LatexHtmlWidgetFactoryConfig config;
@@ -55,9 +54,10 @@ class LatexHtmlWidgetFactory extends WidgetFactory {
       // Determine if this should be display mode
       bool forceDisplayMode = tree.element.classes.contains('math-display');
       bool forceInlineMode = tree.element.classes.contains('math-inline');
-      final inlineAlignment = _shouldCenterInlineMath(
-        rawText: tree.element.text,
-        forceInlineMode: forceInlineMode,
+      final inlineAlignment =
+          _shouldCenterInlineMath(
+            rawText: tree.element.text,
+            forceInlineMode: forceInlineMode,
           )
           ? PlaceholderAlignment.middle
           : PlaceholderAlignment.baseline;
@@ -116,21 +116,19 @@ class _MathWidgetBuilder {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final color = styleData.color ?? 
-            config.defaultColor ??
-            (Theme.of(context).brightness == Brightness.dark
-                ? Colors.white
-                : Colors.black);
+        final color = styleData.color ?? config.defaultColor ?? (Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black);
 
-        final width = constraints.maxWidth.isFinite
-            ? constraints.maxWidth
-            : MediaQuery.sizeOf(context).width;
+        final width = constraints.maxWidth.isFinite ? constraints.maxWidth : MediaQuery.sizeOf(context).width;
         // Check for custom math builder first
         final customWidget = config.customMathBuilder?.call(parsed.tex, styleData);
         if (customWidget != null) {
           final dynamicWidth = _calculateLatexWidth(parsed.tex, fontSize, width);
           return config.responsiveLayout
-              ? _wrapResponsive(child: customWidget, maxWidth: width, contentMaxWidth: dynamicWidth)
+              ? _wrapResponsive(
+                  child: customWidget,
+                  maxWidth: width,
+                  contentMaxWidth: dynamicWidth,
+                )
               : customWidget;
         }
 
@@ -166,21 +164,15 @@ class _MathWidgetBuilder {
           fontSize: mathFontSize,
         );
 
-        final widget = Math.tex(
-          parsed.tex,
-          mathStyle: displayMode ? MathStyle.display : MathStyle.text,
-          textScaleFactor: 1,
-          settings: const TexParserSettings(strict: Strict.ignore),
-          options: mathOptions,
-          textStyle: styleData.toTextStyle().copyWith(fontSize: mathFontSize),
-          onErrorFallback: (error) => _buildMathErrorFallback(
-            error: error,
-            tex: parsed.tex,
-            rawText: rawText,
-            styleData: styleData,
-            dynamicWidth: dynamicWidth,
-            width: width,
-          ),
+        final widget = _buildPrimaryMath(
+          tex: parsed.tex,
+          rawText: rawText,
+          styleData: styleData,
+          displayMode: displayMode,
+          mathOptions: mathOptions,
+          mathFontSize: mathFontSize,
+          dynamicWidth: dynamicWidth,
+          width: width,
         );
 
         return config.responsiveLayout
@@ -232,14 +224,8 @@ class _MathWidgetBuilder {
 
     // Keep flutter_math_fork as default renderer for quality/performance.
     // Only pre-route known risky patterns that can trigger layout asserts.
-    final hasAlignedEnv = RegExp(
-      r'\\begin\{(?:aligned|align\*?|gather\*?|multline\*?)\}',
-      caseSensitive: false,
-    ).hasMatch(tex);
-    final hasEquationEnv = RegExp(
-      r'\\begin\{equation\*?\}',
-      caseSensitive: false,
-    ).hasMatch(tex);
+    final hasAlignedEnv = RegExp(r'\\begin\{(?:aligned|align\*?|gather\*?|multline\*?)\}', caseSensitive: false).hasMatch(tex);
+    final hasEquationEnv = RegExp(r'\\begin\{equation\*?\}', caseSensitive: false).hasMatch(tex);
 
     final hasAlignmentMarker = tex.contains('&');
     final hasLatexLineBreak = tex.contains(r'\\');
@@ -247,10 +233,8 @@ class _MathWidgetBuilder {
 
     // Primary freeze pattern (like ID:1438): inline-delimited, multiline aligned,
     // heavy chained transformations.
-    final riskyInlineAligned =
-        !isDisplayMode && hasAlignedEnv && hasLatexLineBreak && hasAlignmentMarker;
-    final denseChainedInline =
-        !isDisplayMode && hasAlignedEnv && rightArrowCount >= 3;
+    final riskyInlineAligned = !isDisplayMode && hasAlignedEnv && hasLatexLineBreak && hasAlignmentMarker;
+    final denseChainedInline = !isDisplayMode && hasAlignedEnv && rightArrowCount >= 3;
 
     // Equation blocks embedded in inline delimiters are also risky.
     final inlineEquationEnv = !isDisplayMode && hasEquationEnv;
@@ -290,11 +274,7 @@ class _MathWidgetBuilder {
               alignment: Alignment.centerLeft,
               scale: scale,
               child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: 0,
-                  maxHeight: dynamicHeight,
-                  maxWidth: dynamicWidth,
-                ),
+                constraints: BoxConstraints(minHeight: 0, maxHeight: dynamicHeight, maxWidth: dynamicWidth),
                 child: Math2SVG(
                   math: tex,
                   loadingWidgetBuilder: (_) => Text(rawText, style: styleData.toTextStyle()),
@@ -317,10 +297,7 @@ class _MathWidgetBuilder {
       return true;
     }
 
-    return tex.contains(r'\\') ||
-        tex.contains(r'\sum') ||
-        tex.contains(r'\int') ||
-        tex.contains(r'\prod');
+    return tex.contains(r'\\') || tex.contains(r'\sum') || tex.contains(r'\int') || tex.contains(r'\prod');
   }
 
   LatexStyleData _extractStyles() {
@@ -390,10 +367,7 @@ class _MathWidgetBuilder {
     final lineBreaks = RegExp(r'\\\\').allMatches(tex).length;
     final fractions = RegExp(r'\\frac').allMatches(tex).length;
     final binomials = RegExp(r'\\binom|\\choose').allMatches(tex).length;
-    final matrices =
-        RegExp(r'\\begin\{(matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\}')
-            .allMatches(tex)
-            .length;
+    final matrices = RegExp(r'\\begin\{(matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\}').allMatches(tex).length;
     final arrays = RegExp(r'\\begin\{array\}').allMatches(tex).length;
     final align = RegExp(r'\\begin\{align').allMatches(tex).length;
     final cases = RegExp(r'\\begin\{cases\}').allMatches(tex).length;
@@ -465,10 +439,7 @@ class _MathWidgetBuilder {
     final lineBreaks = RegExp(r'\\\\').allMatches(tex).length;
     final fractions = RegExp(r'\\frac').allMatches(tex).length;
     final binomials = RegExp(r'\\binom|\\choose').allMatches(tex).length;
-    final matrices =
-        RegExp(r'\\begin\{(matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\}')
-            .allMatches(tex)
-            .length;
+    final matrices = RegExp(r'\\begin\{(matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\}').allMatches(tex).length;
     final arrays = RegExp(r'\\begin\{array\}').allMatches(tex).length;
     final sums = RegExp(r'\\sum|\\int|\\prod|\\iint|\\iiint').allMatches(tex).length;
     final partials = RegExp(r'\\partial|\\frac\{d|\\frac\{\\partial').allMatches(tex).length;
@@ -519,6 +490,102 @@ class _MathWidgetBuilder {
 
     return maxDepth;
   }
+
+  Widget _buildPrimaryMath({
+    required String tex,
+    required String rawText,
+    required LatexStyleData styleData,
+    required bool displayMode,
+    required MathOptions mathOptions,
+    required double mathFontSize,
+    required double dynamicWidth,
+    required double width,
+  }) {
+    final widget = Math.tex(
+      tex,
+      mathStyle: displayMode ? MathStyle.display : MathStyle.text,
+      textScaleFactor: 1,
+      settings: const TexParserSettings(strict: Strict.ignore),
+      options: mathOptions,
+      textStyle: styleData.toTextStyle().copyWith(fontSize: mathFontSize),
+      onErrorFallback: (error) => _buildMathErrorFallback(
+        error: error,
+        tex: tex,
+        rawText: rawText,
+        styleData: styleData,
+        dynamicWidth: dynamicWidth,
+        width: width,
+      ),
+    );
+
+    if (!_shouldAutoLineBreak(
+      tex: tex,
+      displayMode: displayMode,
+      dynamicWidth: dynamicWidth,
+      width: width,
+    )) {
+      return widget;
+    }
+
+    try {
+      final breakResult = widget.texBreak(
+        relPenalty: config.lineBreakRelPenalty,
+        binOpPenalty: config.lineBreakBinOpPenalty,
+        enforceNoBreak: config.enforceNoBreak,
+      );
+
+      if (breakResult.parts.length <= 1) {
+        return widget;
+      }
+
+      return _LineBrokenMath(maxWidth: width, parts: breakResult.parts);
+    } catch (_) {
+      return widget;
+    }
+  }
+
+  bool _shouldAutoLineBreak({required String tex, required bool displayMode, required double dynamicWidth, required double width}) {
+    if (!config.autoLineBreak || !config.responsiveLayout) {
+      return false;
+    }
+
+    if (config.autoLineBreakDisplayOnly && !displayMode) {
+      return false;
+    }
+
+    if (!width.isFinite || width <= 0 || dynamicWidth <= width) {
+      return false;
+    }
+
+    return tex.contains('+') ||
+        tex.contains('-') ||
+        tex.contains('=') ||
+        tex.contains(r'\le') ||
+        tex.contains(r'\ge') ||
+        tex.contains(r'\lt') ||
+        tex.contains(r'\gt') ||
+        tex.contains(r'\times') ||
+        tex.contains(r'\cdot');
+  }
+}
+
+class _LineBrokenMath extends StatelessWidget {
+  const _LineBrokenMath({required this.maxWidth, required this.parts});
+
+  final double maxWidth;
+  final List<Math> parts;
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: maxWidth),
+      child: Wrap(
+        alignment: WrapAlignment.start,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: parts,
+      ),
+    );
+  }
 }
 
 Widget _wrapResponsive({
@@ -526,6 +593,10 @@ Widget _wrapResponsive({
   required double maxWidth,
   required double contentMaxWidth,
 }) {
+  if (child is _LineBrokenMath) {
+    return child;
+  }
+
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     physics: const BouncingScrollPhysics(),
@@ -540,10 +611,7 @@ class _LatexPayload {
   final bool displayMode;
 }
 
-bool _shouldCenterInlineMath({
-  required String rawText,
-  required bool forceInlineMode,
-}) {
+bool _shouldCenterInlineMath({required String rawText, required bool forceInlineMode}) {
   if (!forceInlineMode) {
     return false;
   }

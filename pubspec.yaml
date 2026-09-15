@@ -1,8 +1,9 @@
 name: flutter_html_latex
 description: "LaTeX support for flutter_widget_from_html_core via math-tex HTML class rendering."
 repository: https://github.com/avijitbarua/flutter_html_latex.git
-version: 0.1.0+1
+version: 0.1.1
 license: MIT
+publish_to: none
 
 environment:
   sdk: ^3.10.4
@@ -13,7 +14,10 @@ dependencies:
     sdk: flutter
   flutter_widget_from_html_core: ^0.17.0
   flutter_math_fork: ^0.7.4
-  flutter_tex: ^5.2.6
+  flutter_tex: #^5.2.6
+    git:
+      url: https://github.com/moon-book/flutter_tex
+      ref: main
 
 
 

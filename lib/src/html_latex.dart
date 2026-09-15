@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
+import 'helper/markdown_to_html.dart';
 import 'latex_style_data.dart';
 import 'latex_widget_factory.dart';
 import 'latex_widget_factory_config.dart';
@@ -21,11 +22,17 @@ class HtmlLatex extends StatelessWidget {
     this.enableFallback,
     this.mathJaxSupported,
     this.responsiveLayout,
+    this.autoLineBreak,
+    this.autoLineBreakDisplayOnly,
+    this.lineBreakRelPenalty,
+    this.lineBreakBinOpPenalty,
+    this.enforceNoBreak,
     this.primaryScaleInline,
     this.primaryScaleBlock,
     this.fallbackScaleInline,
     this.fallbackScaleBlock,
     this.fallbackVerticalPadding,
+    this.autoConvertLatex = true,
   });
 
   /// The HTML content to render.
@@ -56,7 +63,22 @@ class HtmlLatex extends StatelessWidget {
 
   /// Overrides config's responsive behavior when provided.
   final bool? responsiveLayout;
-  
+
+  /// Overrides config's automatic line-breaking behavior when provided.
+  final bool? autoLineBreak;
+
+  /// Overrides whether automatic line breaking only applies to display math.
+  final bool? autoLineBreakDisplayOnly;
+
+  /// Overrides config's relation operator line-break penalty.
+  final int? lineBreakRelPenalty;
+
+  /// Overrides config's binary operator line-break penalty.
+  final int? lineBreakBinOpPenalty;
+
+  /// Overrides whether explicit TeX no-break hints are enforced.
+  final bool? enforceNoBreak;
+
   /// Overrides config's inline primary renderer scale when provided.
   final double? primaryScaleInline;
 
@@ -72,6 +94,11 @@ class HtmlLatex extends StatelessWidget {
   /// Overrides config's fallback vertical padding when provided.
   final double? fallbackVerticalPadding;
 
+  /// Converts markdown-style LaTeX delimiters to HtmlLatex math HTML when true.
+  ///
+  /// Conversion only runs when [data] contains supported math delimiters.
+  final bool autoConvertLatex;
+
   @override
   Widget build(BuildContext context) {
     final base = config ?? const LatexHtmlWidgetFactoryConfig();
@@ -85,11 +112,19 @@ class HtmlLatex extends StatelessWidget {
       enableFallback: enableFallback ?? base.enableFallback,
       mathJaxSupported: mathJaxSupported ?? base.mathJaxSupported,
       responsiveLayout: responsiveLayout ?? base.responsiveLayout,
+      autoLineBreak: autoLineBreak ?? base.autoLineBreak,
+      autoLineBreakDisplayOnly:
+          autoLineBreakDisplayOnly ?? base.autoLineBreakDisplayOnly,
+      lineBreakRelPenalty: lineBreakRelPenalty ?? base.lineBreakRelPenalty,
+      lineBreakBinOpPenalty:
+          lineBreakBinOpPenalty ?? base.lineBreakBinOpPenalty,
+      enforceNoBreak: enforceNoBreak ?? base.enforceNoBreak,
       primaryScaleInline: primaryScaleInline ?? base.primaryScaleInline,
       primaryScaleBlock: primaryScaleBlock ?? base.primaryScaleBlock,
       fallbackScaleInline: fallbackScaleInline ?? base.fallbackScaleInline,
       fallbackScaleBlock: fallbackScaleBlock ?? base.fallbackScaleBlock,
-      fallbackVerticalPadding: fallbackVerticalPadding ?? base.fallbackVerticalPadding,
+      fallbackVerticalPadding:
+          fallbackVerticalPadding ?? base.fallbackVerticalPadding,
       customStylesBuilder: (element) {
         final fromConfig = base.customStylesBuilder?.call(element);
         final fromWidget = customStylesBuilder?.call(element);
@@ -107,8 +142,12 @@ class HtmlLatex extends StatelessWidget {
       },
     );
 
+    final htmlData = autoConvertLatex && containsLatexMath(data)
+        ? convertMarkdownToHtmlLatex(data)
+        : data;
+
     return HtmlWidget(
-      data,
+      htmlData,
       factoryBuilder: () => LatexHtmlWidgetFactory(config: mergedConfig),
       textStyle: style,
     );
@@ -122,7 +161,11 @@ class HtmlLatex extends StatelessWidget {
     final css = <String, String>{};
 
     if (style.color != null) {
-      final hex = style.color!.toARGB32().toRadixString(16).padLeft(8, '0').toUpperCase();
+      final hex = style.color!
+          .toARGB32()
+          .toRadixString(16)
+          .padLeft(8, '0')
+          .toUpperCase();
       css['color'] = '#$hex';
     }
 
@@ -139,7 +182,9 @@ class HtmlLatex extends StatelessWidget {
     }
 
     if (style.fontStyle != null) {
-      css['font-style'] = style.fontStyle == FontStyle.italic ? 'italic' : 'normal';
+      css['font-style'] = style.fontStyle == FontStyle.italic
+          ? 'italic'
+          : 'normal';
     }
 
     if (style.letterSpacing != null) {

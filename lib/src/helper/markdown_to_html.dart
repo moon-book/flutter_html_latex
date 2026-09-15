@@ -1,17 +1,18 @@
 import 'package:markdown/markdown.dart' as md;
 
 String convertMarkdownToHtml(String markdown) {
-  return _convertMarkdownToHtml(
-    markdown,
-    mathBuilder: _buildPlainMathHtml,
-  );
+  return _convertMarkdownToHtml(markdown, mathBuilder: _buildPlainMathHtml);
 }
 
 String convertMarkdownToHtmlLatex(String markdown) {
-  return _convertMarkdownToHtml(
-    markdown,
-    mathBuilder: _buildHtmlLatexMathHtml,
-  );
+  return _convertMarkdownToHtml(markdown, mathBuilder: _buildHtmlLatexMathHtml);
+}
+
+bool containsLatexMath(String input) {
+  return RegExp(r'\$\$[\s\S]+?\$\$').hasMatch(input) ||
+      RegExp(r'\\\[[\s\S]+?\\\]').hasMatch(input) ||
+      RegExp(r'(?<!\$)\$(?!\$)[\s\S]+?(?<!\$)\$(?!\$)').hasMatch(input) ||
+      RegExp(r'\\\([\s\S]+?\\\)').hasMatch(input);
 }
 
 String _convertMarkdownToHtml(
@@ -28,70 +29,29 @@ String _convertMarkdownToHtml(
     (match) => '${match.group(1)}${match.group(2)}\\${match.group(3)}${match.group(4)}',
   );
 
-  text = text.replaceAllMapped(
-    RegExp(r'```[\s\S]*?```'),
-    (match) {
-      final index = codeBlocks.length;
-      codeBlocks.add(match.group(0)!);
-      return 'CODEBLOCK${index}XYZ';
-    },
-  );
+  text = text.replaceAllMapped(RegExp(r'```[\s\S]*?```'), (match) {
+    final index = codeBlocks.length;
+    codeBlocks.add(match.group(0)!);
+    return 'CODEBLOCK${index}XYZ';
+  });
 
-  text = text.replaceAllMapped(
-    RegExp(r'\$\$([\s\S]*?)\$\$'),
-    (match) {
-      final index = mathExpressions.length;
-      mathExpressions.add(
-        _MathExpression(
-          latex: match.group(1)!.trim(),
-          isBlock: true,
-        ),
-      );
-      return '\n\nMATHBLOCK${index}XYZ\n\n';
-    },
-  );
+  text = _extractDollarMathExpressions(text, mathExpressions);
 
-  text = text.replaceAllMapped(
-    RegExp(r'\\\[([\s\S]*?)\\\]'),
-    (match) {
-      final index = mathExpressions.length;
-      mathExpressions.add(
-        _MathExpression(
-          latex: match.group(1)!.trim(),
-          isBlock: true,
-        ),
-      );
-      return '\n\nMATHBLOCK${index}XYZ\n\n';
-    },
-  );
+  text = text.replaceAllMapped(RegExp(r'\\\[([\s\S]*?)\\\]'), (match) {
+    final index = mathExpressions.length;
+    mathExpressions.add(
+      _MathExpression(latex: match.group(1)!.trim(), isBlock: true),
+    );
+    return '\n\nMATHBLOCK${index}XYZ\n\n';
+  });
 
-  text = text.replaceAllMapped(
-    RegExp(r'(?<!\$)\$(?!\$)([\s\S]*?)(?<!\$)\$(?!\$)'),
-    (match) {
-      final index = mathExpressions.length;
-      mathExpressions.add(
-        _MathExpression(
-          latex: match.group(1)!.trim(),
-          isBlock: false,
-        ),
-      );
-      return 'MATHINLINE${index}XYZ';
-    },
-  );
-
-  text = text.replaceAllMapped(
-    RegExp(r'\\\(([\s\S]*?)\\\)'),
-    (match) {
-      final index = mathExpressions.length;
-      mathExpressions.add(
-        _MathExpression(
-          latex: match.group(1)!.trim(),
-          isBlock: false,
-        ),
-      );
-      return 'MATHINLINE${index}XYZ';
-    },
-  );
+  text = text.replaceAllMapped(RegExp(r'\\\(([\s\S]*?)\\\)'), (match) {
+    final index = mathExpressions.length;
+    mathExpressions.add(
+      _MathExpression(latex: match.group(1)!.trim(), isBlock: false),
+    );
+    return 'MATHINLINE${index}XYZ';
+  });
 
   var html = md.markdownToHtml(
     text,
@@ -105,17 +65,11 @@ String _convertMarkdownToHtml(
     final expression = mathExpressions[i];
     final placeholder = expression.isBlock ? 'MATHBLOCK${i}XYZ' : 'MATHINLINE${i}XYZ';
 
-    html = html.replaceAll(
-      placeholder,
-      mathBuilder(expression),
-    );
+    html = html.replaceAll(placeholder, mathBuilder(expression));
   }
 
   for (var i = 0; i < codeBlocks.length; i++) {
-    html = html.replaceAll(
-      'CODEBLOCK${i}XYZ',
-      codeBlocks[i],
-    );
+    html = html.replaceAll('CODEBLOCK${i}XYZ', codeBlocks[i]);
   }
 
   return _preserveNewLines(html);
@@ -142,6 +96,73 @@ String _buildHtmlLatexMathHtml(_MathExpression expression) {
 String _escapeHtmlText(String text) {
   return text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 }
+
+String _extractDollarMathExpressions(
+  String text,
+  List<_MathExpression> mathExpressions,
+) {
+  final buffer = StringBuffer();
+  var index = 0;
+
+  while (index < text.length) {
+    if (text.startsWith(r'$$', index)) {
+      final closeIndex = text.indexOf(r'$$', index + 2);
+      if (closeIndex == -1) {
+        buffer.write(r'$$');
+        index += 2;
+        continue;
+      }
+
+      final expressionIndex = mathExpressions.length;
+      mathExpressions.add(
+        _MathExpression(
+          latex: text.substring(index + 2, closeIndex).trim(),
+          isBlock: true,
+        ),
+      );
+      buffer.write('\n\nMATHBLOCK${expressionIndex}XYZ\n\n');
+      index = closeIndex + 2;
+      continue;
+    }
+
+    if (text.codeUnitAt(index) == _dollarCodeUnit) {
+      final closeIndex = _findSingleDollarClose(text, index + 1);
+      if (closeIndex == -1) {
+        buffer.writeCharCode(_dollarCodeUnit);
+        index++;
+        continue;
+      }
+
+      final expressionIndex = mathExpressions.length;
+      mathExpressions.add(
+        _MathExpression(
+          latex: text.substring(index + 1, closeIndex).trim(),
+          isBlock: false,
+        ),
+      );
+      buffer.write('MATHINLINE${expressionIndex}XYZ');
+      index = closeIndex + 1;
+      continue;
+    }
+
+    buffer.writeCharCode(text.codeUnitAt(index));
+    index++;
+  }
+
+  return buffer.toString();
+}
+
+int _findSingleDollarClose(String text, int start) {
+  for (var index = start; index < text.length; index++) {
+    if (text.codeUnitAt(index) == _dollarCodeUnit) {
+      return index;
+    }
+  }
+
+  return -1;
+}
+
+const _dollarCodeUnit = 36;
 
 String _unwrapStandaloneBlockMathPlaceholders(String html) {
   return html.replaceAllMapped(
@@ -185,10 +206,7 @@ String _preserveNewLines(String html) {
     ),
   );
 
-  html = protectMatches(
-    html,
-    RegExp(r'\\\[[\s\S]*?\\\]'),
-  );
+  html = protectMatches(html, RegExp(r'\\\[[\s\S]*?\\\]'));
 
   html = html.replaceAll('\n', '<br>');
 
@@ -200,10 +218,7 @@ String _preserveNewLines(String html) {
 }
 
 class _MathExpression {
-  const _MathExpression({
-    required this.latex,
-    required this.isBlock,
-  });
+  const _MathExpression({required this.latex, required this.isBlock});
 
   final String latex;
   final bool isBlock;
