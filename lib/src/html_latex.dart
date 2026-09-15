@@ -22,6 +22,11 @@ class HtmlLatex extends StatelessWidget {
     this.enableFallback,
     this.mathJaxSupported,
     this.responsiveLayout,
+    this.autoLineBreak,
+    this.autoLineBreakDisplayOnly,
+    this.lineBreakRelPenalty,
+    this.lineBreakBinOpPenalty,
+    this.enforceNoBreak,
     this.primaryScaleInline,
     this.primaryScaleBlock,
     this.fallbackScaleInline,
@@ -59,6 +64,21 @@ class HtmlLatex extends StatelessWidget {
   /// Overrides config's responsive behavior when provided.
   final bool? responsiveLayout;
 
+  /// Overrides config's automatic line-breaking behavior when provided.
+  final bool? autoLineBreak;
+
+  /// Overrides whether automatic line breaking only applies to display math.
+  final bool? autoLineBreakDisplayOnly;
+
+  /// Overrides config's relation operator line-break penalty.
+  final int? lineBreakRelPenalty;
+
+  /// Overrides config's binary operator line-break penalty.
+  final int? lineBreakBinOpPenalty;
+
+  /// Overrides whether explicit TeX no-break hints are enforced.
+  final bool? enforceNoBreak;
+
   /// Overrides config's inline primary renderer scale when provided.
   final double? primaryScaleInline;
 
@@ -92,11 +112,19 @@ class HtmlLatex extends StatelessWidget {
       enableFallback: enableFallback ?? base.enableFallback,
       mathJaxSupported: mathJaxSupported ?? base.mathJaxSupported,
       responsiveLayout: responsiveLayout ?? base.responsiveLayout,
+      autoLineBreak: autoLineBreak ?? base.autoLineBreak,
+      autoLineBreakDisplayOnly:
+          autoLineBreakDisplayOnly ?? base.autoLineBreakDisplayOnly,
+      lineBreakRelPenalty: lineBreakRelPenalty ?? base.lineBreakRelPenalty,
+      lineBreakBinOpPenalty:
+          lineBreakBinOpPenalty ?? base.lineBreakBinOpPenalty,
+      enforceNoBreak: enforceNoBreak ?? base.enforceNoBreak,
       primaryScaleInline: primaryScaleInline ?? base.primaryScaleInline,
       primaryScaleBlock: primaryScaleBlock ?? base.primaryScaleBlock,
       fallbackScaleInline: fallbackScaleInline ?? base.fallbackScaleInline,
       fallbackScaleBlock: fallbackScaleBlock ?? base.fallbackScaleBlock,
-      fallbackVerticalPadding: fallbackVerticalPadding ?? base.fallbackVerticalPadding,
+      fallbackVerticalPadding:
+          fallbackVerticalPadding ?? base.fallbackVerticalPadding,
       customStylesBuilder: (element) {
         final fromConfig = base.customStylesBuilder?.call(element);
         final fromWidget = customStylesBuilder?.call(element);
@@ -133,7 +161,11 @@ class HtmlLatex extends StatelessWidget {
     final css = <String, String>{};
 
     if (style.color != null) {
-      final hex = style.color!.toARGB32().toRadixString(16).padLeft(8, '0').toUpperCase();
+      final hex = style.color!
+          .toARGB32()
+          .toRadixString(16)
+          .padLeft(8, '0')
+          .toUpperCase();
       css['color'] = '#$hex';
     }
 
@@ -150,7 +182,9 @@ class HtmlLatex extends StatelessWidget {
     }
 
     if (style.fontStyle != null) {
-      css['font-style'] = style.fontStyle == FontStyle.italic ? 'italic' : 'normal';
+      css['font-style'] = style.fontStyle == FontStyle.italic
+          ? 'italic'
+          : 'normal';
     }
 
     if (style.letterSpacing != null) {

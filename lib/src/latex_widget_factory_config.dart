@@ -36,6 +36,11 @@ class LatexHtmlWidgetFactoryConfig {
     this.enableFallback = true,
     this.mathJaxSupported = false,
     this.responsiveLayout = true,
+    this.autoLineBreak = true,
+    this.autoLineBreakDisplayOnly = true,
+    this.lineBreakRelPenalty = 500,
+    this.lineBreakBinOpPenalty = 700,
+    this.enforceNoBreak = true,
     this.primaryScaleInline = 1.0,
     this.primaryScaleBlock = 1.0,
     this.fallbackScaleInline = 0.86,
@@ -139,7 +144,35 @@ class LatexHtmlWidgetFactoryConfig {
   /// When true, oversized formulas are wrapped in SingleChildScrollView(Axis.horizontal)
   /// to prevent RenderLine overflow exceptions on narrow screens.
   final bool responsiveLayout;
-  
+
+  /// Automatically split oversized formulas into multiple lines.
+  ///
+  /// Default: true
+  /// Uses `flutter_math_fork`'s TeX breakpoints and lays the resulting parts
+  /// out with a Flutter [Wrap].
+  final bool autoLineBreak;
+
+  /// Restrict automatic line breaking to display/block formulas.
+  ///
+  /// Default: true
+  /// This keeps inline formulas from being broken inside normal paragraph text.
+  final bool autoLineBreakDisplayOnly;
+
+  /// Penalty used for relation operator breakpoints.
+  ///
+  /// Default: 500
+  final int lineBreakRelPenalty;
+
+  /// Penalty used for binary operator breakpoints.
+  ///
+  /// Default: 700
+  final int lineBreakBinOpPenalty;
+
+  /// Whether explicit TeX no-break hints should be enforced.
+  ///
+  /// Default: true
+  final bool enforceNoBreak;
+
   /// Scale applied to inline formulas rendered by the primary `flutter_math_fork` renderer.
   ///
   /// Default: 1.0
@@ -188,6 +221,11 @@ class LatexHtmlWidgetFactoryConfig {
     bool? enableFallback,
     bool? mathJaxSupported,
     bool? responsiveLayout,
+    bool? autoLineBreak,
+    bool? autoLineBreakDisplayOnly,
+    int? lineBreakRelPenalty,
+    int? lineBreakBinOpPenalty,
+    bool? enforceNoBreak,
     double? primaryScaleInline,
     double? primaryScaleBlock,
     double? fallbackScaleInline,
@@ -205,22 +243,32 @@ class LatexHtmlWidgetFactoryConfig {
       enableFallback: enableFallback ?? this.enableFallback,
       mathJaxSupported: mathJaxSupported ?? this.mathJaxSupported,
       responsiveLayout: responsiveLayout ?? this.responsiveLayout,
+      autoLineBreak: autoLineBreak ?? this.autoLineBreak,
+      autoLineBreakDisplayOnly:
+          autoLineBreakDisplayOnly ?? this.autoLineBreakDisplayOnly,
+      lineBreakRelPenalty: lineBreakRelPenalty ?? this.lineBreakRelPenalty,
+      lineBreakBinOpPenalty:
+          lineBreakBinOpPenalty ?? this.lineBreakBinOpPenalty,
+      enforceNoBreak: enforceNoBreak ?? this.enforceNoBreak,
       primaryScaleInline: primaryScaleInline ?? this.primaryScaleInline,
       primaryScaleBlock: primaryScaleBlock ?? this.primaryScaleBlock,
       fallbackScaleInline: fallbackScaleInline ?? this.fallbackScaleInline,
       fallbackScaleBlock: fallbackScaleBlock ?? this.fallbackScaleBlock,
-      fallbackVerticalPadding: fallbackVerticalPadding ?? this.fallbackVerticalPadding,
+      fallbackVerticalPadding:
+          fallbackVerticalPadding ?? this.fallbackVerticalPadding,
       hyphenationCharacter: hyphenationCharacter ?? this.hyphenationCharacter,
     );
   }
 
   @override
-  String toString() => 'LatexHtmlWidgetFactoryConfig('
+  String toString() =>
+      'LatexHtmlWidgetFactoryConfig('
       'baseFontSize: $baseFontSize, '
       'defaultColor: $defaultColor, '
       'enableFallback: $enableFallback, '
       'mathJaxSupported: $mathJaxSupported, '
       'responsiveLayout: $responsiveLayout, '
+      'autoLineBreak: $autoLineBreak, '
       'primaryScaleInline: $primaryScaleInline, '
       'primaryScaleBlock: $primaryScaleBlock, '
       'fallbackScaleInline: $fallbackScaleInline, '
