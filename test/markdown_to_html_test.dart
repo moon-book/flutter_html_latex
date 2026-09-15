@@ -11,7 +11,10 @@ void main() {
     });
 
     test('ignores strings without latex math delimiters', () {
-      expect(containsLatexMath('Day la chuoi html/markdown binh thuong.'), isFalse);
+      expect(
+        containsLatexMath('Day la chuoi html/markdown binh thuong.'),
+        isFalse,
+      );
     });
   });
 
@@ -21,10 +24,7 @@ void main() {
 
       final html = convertMarkdownToHtmlLatex(markdown);
 
-      expect(
-        html,
-        contains('<span class="math-inline">\\(Z = 19\\)</span>'),
-      );
+      expect(html, contains('<span class="math-inline">\\(Z = 19\\)</span>'));
     });
 
     test('wraps block latex and escapes html-sensitive characters', () {
@@ -44,6 +44,28 @@ $$''';
       expect(html, isNot(contains('<br>\\[')));
       expect(html, isNot(contains('<p><div class="math-display">')));
       expect(html, isNot(contains('</div></p>')));
+    });
+
+    test('splits adjacent inline latex delimiters instead of making a block', () {
+      const markdown =
+          r'Vì nhiệt độ không đổi nên:${p_1}{V_1} = {p_2}{V_2}$$\Rightarrow {V_2} = \frac{{p_1}{V_1}}{{p_2}}$';
+
+      final html = convertMarkdownToHtmlLatex(markdown);
+
+      expect(
+        html,
+        contains(
+          r'<span class="math-inline">\({p_1}{V_1} = {p_2}{V_2}\)</span>',
+        ),
+      );
+      expect(
+        html,
+        contains(
+          r'<span class="math-inline">\(\Rightarrow {V_2} = \frac{{p_1}{V_1}}{{p_2}}\)</span>',
+        ),
+      );
+      expect(html, isNot(contains('MATHBLOCK')));
+      expect(html, isNot(contains('math-display')));
     });
 
     test('keeps plain markdown converter behavior for inline latex', () {
@@ -76,10 +98,7 @@ $$''';
       final html = convertMarkdownToHtmlLatex(markdown);
 
       expect(html, contains('Cl<sub>2</sub>'));
-      expect(
-        html,
-        contains('<span class="math-inline">\\(Z = 17\\)</span>'),
-      );
+      expect(html, contains('<span class="math-inline">\\(Z = 17\\)</span>'));
     });
   });
 }
