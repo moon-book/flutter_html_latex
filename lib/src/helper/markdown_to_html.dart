@@ -26,7 +26,8 @@ String _convertMarkdownToHtml(
 
   text = text.replaceAllMapped(
     RegExp(r'^(\s*)(\d+)([.)])(\s)', multiLine: true),
-    (match) => '${match.group(1)}${match.group(2)}\\${match.group(3)}${match.group(4)}',
+    (match) =>
+        '${match.group(1)}${match.group(2)}\\${match.group(3)}${match.group(4)}',
   );
 
   text = text.replaceAllMapped(RegExp(r'```[\s\S]*?```'), (match) {
@@ -63,7 +64,9 @@ String _convertMarkdownToHtml(
 
   for (var i = 0; i < mathExpressions.length; i++) {
     final expression = mathExpressions[i];
-    final placeholder = expression.isBlock ? 'MATHBLOCK${i}XYZ' : 'MATHINLINE${i}XYZ';
+    final placeholder = expression.isBlock
+        ? 'MATHBLOCK${i}XYZ'
+        : 'MATHINLINE${i}XYZ';
 
     html = html.replaceAll(placeholder, mathBuilder(expression));
   }
@@ -76,7 +79,7 @@ String _convertMarkdownToHtml(
 }
 
 String _buildPlainMathHtml(_MathExpression expression) {
-  final escapedLatex = _escapeHtmlText(expression.latex);
+  final escapedLatex = _escapeHtmlText(_normalizeLatex(expression.latex));
   if (expression.isBlock) {
     return '\\[$escapedLatex\\]';
   }
@@ -85,7 +88,7 @@ String _buildPlainMathHtml(_MathExpression expression) {
 }
 
 String _buildHtmlLatexMathHtml(_MathExpression expression) {
-  final escapedLatex = _escapeHtmlText(expression.latex);
+  final escapedLatex = _escapeHtmlText(_normalizeLatex(expression.latex));
   if (expression.isBlock) {
     return '<div class="math-display">\\[$escapedLatex\\]</div>';
   }
@@ -94,7 +97,37 @@ String _buildHtmlLatexMathHtml(_MathExpression expression) {
 }
 
 String _escapeHtmlText(String text) {
-  return text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+  return text
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;');
+}
+
+String _decodeHtmlEntities(String text) {
+  return text
+      .replaceAll('&nbsp;', ' ')
+      .replaceAll('&amp;', '&')
+      .replaceAll('&lt;', '<')
+      .replaceAll('&gt;', '>')
+      .replaceAll('&quot;', '"')
+      .replaceAll('&#39;', "'")
+      .replaceAll('&apos;', "'");
+}
+
+String _normalizeLatex(String latex) {
+  return _normalizeAlignEnvironment(_decodeHtmlEntities(latex));
+}
+
+String _normalizeAlignEnvironment(String latex) {
+  return latex
+      .replaceAllMapped(
+        RegExp(r'\\begin\{align\*?\}'),
+        (_) => r'\begin{aligned}',
+      )
+      .replaceAllMapped(
+        RegExp(r'\\end\{align\*?\}'),
+        (_) => r'\end{aligned}',
+      );
 }
 
 String _extractDollarMathExpressions(
