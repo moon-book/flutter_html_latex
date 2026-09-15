@@ -46,6 +46,37 @@ $$''';
       expect(html, isNot(contains('</div></p>')));
     });
 
+    test('normalizes html entities inside latex before escaping output', () {
+      const markdown =
+          r'$x&gt;0$ $\begin{align} &amp; {{x}_{1}}=\frac{3-\sqrt{5}}{4} \\ \end{align}$';
+
+      final html = convertMarkdownToHtmlLatex(markdown);
+
+      expect(html, contains(r'\(x&gt;0\)'));
+      expect(html, contains(r'\begin{aligned} &amp; {{x}_{1}}'));
+      expect(html, contains(r'\end{aligned}'));
+      expect(html, isNot(contains(r'\begin{align}')));
+      expect(html, isNot(contains('&amp;gt;')));
+      expect(html, isNot(contains('&amp;amp;')));
+    });
+
+    test('normalizes inline align environment nested in brackets', () {
+      const markdown =
+          r'''$\Leftrightarrow 4{{x}^{2}}-6x+1=0\Leftrightarrow \left[ \begin{align}
+ &amp; {{x}_{1}}=\frac{3-\sqrt{5}}{4} \\ 
+ &amp; {{x}_{2}}=\frac{3+\sqrt{5}}{4} \\ 
+\end{align} \right.$''';
+
+      final html = convertMarkdownToHtmlLatex(markdown);
+
+      expect(html, contains(r'\left[ \begin{aligned}'));
+      expect(html, contains(r'&amp; {{x}_{1}}'));
+      expect(html, contains(r'&amp; {{x}_{2}}'));
+      expect(html, contains(r'\end{aligned} \right.'));
+      expect(html, isNot(contains(r'\begin{align}')));
+      expect(html, isNot(contains('&amp;amp;')));
+    });
+
     test('splits adjacent inline latex delimiters instead of making a block', () {
       const markdown =
           r'Vì nhiệt độ không đổi nên:${p_1}{V_1} = {p_2}{V_2}$$\Rightarrow {V_2} = \frac{{p_1}{V_1}}{{p_2}}$';
