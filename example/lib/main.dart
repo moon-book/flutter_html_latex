@@ -21,10 +21,7 @@ class ExampleApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'flutter_html_latex example',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0D6E6E)),
-        useMaterial3: true,
-      ),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0D6E6E)), useMaterial3: true),
       home: const QuizListPage(),
     );
   }
@@ -52,9 +49,7 @@ class QuizItem {
       id: json['ID'] as int? ?? 0,
       subject: json['subject'] as String? ?? '',
       question: json['question'] as String? ?? '',
-      options: (json['options'] as List<dynamic>? ?? const <dynamic>[])
-          .map((e) => e.toString())
-          .toList(growable: false),
+      options: (json['options'] as List<dynamic>? ?? const <dynamic>[]).map((e) => e.toString()).toList(growable: false),
       answer: json['answer'] as String? ?? '',
       explanation: json['explanation'] as String? ?? '',
     );
@@ -84,10 +79,7 @@ Future<List<QuizItem>> loadQuizItems() async {
   final raw = await rootBundle.loadString('assets/data_example.json');
   final decoded = jsonDecode(raw) as Map<String, dynamic>;
   final list = decoded['data'] as List<dynamic>? ?? const <dynamic>[];
-  return list
-      .whereType<Map<String, dynamic>>()
-      .map(QuizItem.fromJson)
-      .toList(growable: false);
+  return list.whereType<Map<String, dynamic>>().map(QuizItem.fromJson).toList(growable: false);
 }
 
 class QuizListPage extends StatelessWidget {
@@ -106,10 +98,7 @@ class QuizListPage extends StatelessWidget {
 
           if (snapshot.hasError) {
             return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text('Failed to load JSON: ${snapshot.error}'),
-              ),
+              child: Padding(padding: const EdgeInsets.all(16), child: Text('Failed to load JSON: ${snapshot.error}')),
             );
           }
 
@@ -131,15 +120,14 @@ class QuizListPage extends StatelessWidget {
                   mathJaxSupported: kMathJaxSupported,
                   fallbackScaleInline: 0.84, // tune 0.82–0.90
                   fallbackScaleBlock: 0.90, // tune 0.88–0.96
-                  fallbackVerticalPadding: 1.5, // tune 0–4
+                  fallbackVerticalPadding: 1.5,
+                  onLatexSelected: (tex) {
+                    debugPrint('Selected LaTeX: $tex');
+                  }, // tune 0–4
                 ),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (_) => QuizDetailPage(item: item),
-                    ),
-                  );
+                  Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => QuizDetailPage(item: item)));
                 },
               );
             },
@@ -164,20 +152,13 @@ class QuizDetailPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Text(
-            'Subject: ${item.subject}',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
+          Text('Subject: ${item.subject}', style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 12),
           const Text('Question', style: TextStyle(fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
           HtmlLatex(
             item.question,
-            style: const TextStyle(
-              color: Colors.black87,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
+            style: const TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w600),
             mathJaxSupported: kMathJaxSupported,
           ),
           const SizedBox(height: 16),
@@ -185,9 +166,7 @@ class QuizDetailPage extends StatelessWidget {
           const SizedBox(height: 8),
           for (var i = 0; i < item.options.length; i++)
             Card(
-              color: answerIndex == i
-                  ? Theme.of(context).colorScheme.secondaryContainer
-                  : null,
+              color: answerIndex == i ? Theme.of(context).colorScheme.secondaryContainer : null,
               child: Padding(
                 padding: const EdgeInsets.all(12),
                 child: Row(
@@ -197,10 +176,7 @@ class QuizDetailPage extends StatelessWidget {
                     Expanded(
                       child: HtmlLatex(
                         item.options[i],
-                        style: const TextStyle(
-                          color: Colors.black87,
-                          fontSize: 14,
-                        ),
+                        style: const TextStyle(color: Colors.black87, fontSize: 14),
                         mathJaxSupported: kMathJaxSupported,
                       ),
                     ),
@@ -209,16 +185,16 @@ class QuizDetailPage extends StatelessWidget {
               ),
             ),
           const SizedBox(height: 16),
-          const Text(
-            'Explanation',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+          const Text('Explanation', style: TextStyle(fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
           if (item.explanation.trim().isEmpty)
             const Text('No explanation provided.')
           else
             HtmlLatex(
               item.explanation,
+              onLatexSelected: (latex) {
+                debugPrint('Selected LaTeX: $latex');
+              },
               style: const TextStyle(fontSize: 15, color: Colors.black87),
               mathJaxSupported: kMathJaxSupported,
               fallbackScaleInline: 0.84, // tune 0.82–0.90

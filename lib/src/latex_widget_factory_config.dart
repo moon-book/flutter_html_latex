@@ -33,6 +33,7 @@ class LatexHtmlWidgetFactoryConfig {
     this.customStylesBuilder,
     this.customMathBuilder,
     this.onMathError,
+    this.onLatexSelected,
     this.enableFallback = true,
     this.mathJaxSupported = false,
     this.responsiveLayout = true,
@@ -123,6 +124,19 @@ class LatexHtmlWidgetFactoryConfig {
   /// }
   /// ```
   final Widget? Function(Object error, String latex)? onMathError;
+
+  /// Callback invoked when a LaTeX formula is selected (tapped).
+  ///
+  /// Called with the LaTeX formula string when the user taps on a rendered formula.
+  ///
+  /// Example:
+  /// ```dart
+  /// onLatexSelected: (latex) {
+  ///   debugPrint('User selected: $latex');
+  ///   Clipboard.setData(ClipboardData(text: latex));
+  /// }
+  /// ```
+  final void Function(String latex)? onLatexSelected;
 
   /// Enable fallback to Math2SVG (flutter_tex) when Math.tex fails.
   ///
@@ -218,6 +232,7 @@ class LatexHtmlWidgetFactoryConfig {
     Map<String, String>? Function(dynamic)? customStylesBuilder,
     Widget? Function(String, LatexStyleData)? customMathBuilder,
     Widget? Function(Object, String)? onMathError,
+    void Function(String)? onLatexSelected,
     bool? enableFallback,
     bool? mathJaxSupported,
     bool? responsiveLayout,
@@ -240,22 +255,20 @@ class LatexHtmlWidgetFactoryConfig {
       customStylesBuilder: customStylesBuilder ?? this.customStylesBuilder,
       customMathBuilder: customMathBuilder ?? this.customMathBuilder,
       onMathError: onMathError ?? this.onMathError,
+      onLatexSelected: onLatexSelected ?? this.onLatexSelected,
       enableFallback: enableFallback ?? this.enableFallback,
       mathJaxSupported: mathJaxSupported ?? this.mathJaxSupported,
       responsiveLayout: responsiveLayout ?? this.responsiveLayout,
       autoLineBreak: autoLineBreak ?? this.autoLineBreak,
-      autoLineBreakDisplayOnly:
-          autoLineBreakDisplayOnly ?? this.autoLineBreakDisplayOnly,
+      autoLineBreakDisplayOnly: autoLineBreakDisplayOnly ?? this.autoLineBreakDisplayOnly,
       lineBreakRelPenalty: lineBreakRelPenalty ?? this.lineBreakRelPenalty,
-      lineBreakBinOpPenalty:
-          lineBreakBinOpPenalty ?? this.lineBreakBinOpPenalty,
+      lineBreakBinOpPenalty: lineBreakBinOpPenalty ?? this.lineBreakBinOpPenalty,
       enforceNoBreak: enforceNoBreak ?? this.enforceNoBreak,
       primaryScaleInline: primaryScaleInline ?? this.primaryScaleInline,
       primaryScaleBlock: primaryScaleBlock ?? this.primaryScaleBlock,
       fallbackScaleInline: fallbackScaleInline ?? this.fallbackScaleInline,
       fallbackScaleBlock: fallbackScaleBlock ?? this.fallbackScaleBlock,
-      fallbackVerticalPadding:
-          fallbackVerticalPadding ?? this.fallbackVerticalPadding,
+      fallbackVerticalPadding: fallbackVerticalPadding ?? this.fallbackVerticalPadding,
       hyphenationCharacter: hyphenationCharacter ?? this.hyphenationCharacter,
     );
   }

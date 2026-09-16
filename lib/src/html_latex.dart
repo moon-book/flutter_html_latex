@@ -33,6 +33,7 @@ class HtmlLatex extends StatelessWidget {
     this.fallbackScaleBlock,
     this.fallbackVerticalPadding,
     this.autoConvertLatex = true,
+    this.onLatexSelected,
   });
 
   /// The HTML content to render.
@@ -99,6 +100,9 @@ class HtmlLatex extends StatelessWidget {
   /// Conversion only runs when [data] contains supported math delimiters.
   final bool autoConvertLatex;
 
+  /// Callback invoked when a LaTeX formula is selected.
+  final void Function(String latex)? onLatexSelected;
+
   @override
   Widget build(BuildContext context) {
     final base = config ?? const LatexHtmlWidgetFactoryConfig();
@@ -109,22 +113,20 @@ class HtmlLatex extends StatelessWidget {
       defaultFontFamily: style?.fontFamily ?? base.defaultFontFamily,
       customMathBuilder: customMathBuilder ?? base.customMathBuilder,
       onMathError: onMathError ?? base.onMathError,
+      onLatexSelected: onLatexSelected ?? base.onLatexSelected,
       enableFallback: enableFallback ?? base.enableFallback,
       mathJaxSupported: mathJaxSupported ?? base.mathJaxSupported,
       responsiveLayout: responsiveLayout ?? base.responsiveLayout,
       autoLineBreak: autoLineBreak ?? base.autoLineBreak,
-      autoLineBreakDisplayOnly:
-          autoLineBreakDisplayOnly ?? base.autoLineBreakDisplayOnly,
+      autoLineBreakDisplayOnly: autoLineBreakDisplayOnly ?? base.autoLineBreakDisplayOnly,
       lineBreakRelPenalty: lineBreakRelPenalty ?? base.lineBreakRelPenalty,
-      lineBreakBinOpPenalty:
-          lineBreakBinOpPenalty ?? base.lineBreakBinOpPenalty,
+      lineBreakBinOpPenalty: lineBreakBinOpPenalty ?? base.lineBreakBinOpPenalty,
       enforceNoBreak: enforceNoBreak ?? base.enforceNoBreak,
       primaryScaleInline: primaryScaleInline ?? base.primaryScaleInline,
       primaryScaleBlock: primaryScaleBlock ?? base.primaryScaleBlock,
       fallbackScaleInline: fallbackScaleInline ?? base.fallbackScaleInline,
       fallbackScaleBlock: fallbackScaleBlock ?? base.fallbackScaleBlock,
-      fallbackVerticalPadding:
-          fallbackVerticalPadding ?? base.fallbackVerticalPadding,
+      fallbackVerticalPadding: fallbackVerticalPadding ?? base.fallbackVerticalPadding,
       customStylesBuilder: (element) {
         final fromConfig = base.customStylesBuilder?.call(element);
         final fromWidget = customStylesBuilder?.call(element);
@@ -142,9 +144,7 @@ class HtmlLatex extends StatelessWidget {
       },
     );
 
-    final htmlData = autoConvertLatex && containsLatexMath(data)
-        ? convertMarkdownToHtmlLatex(data)
-        : data;
+    final htmlData = autoConvertLatex && containsLatexMath(data) ? convertMarkdownToHtmlLatex(data) : data;
 
     return HtmlWidget(
       htmlData,
@@ -161,11 +161,7 @@ class HtmlLatex extends StatelessWidget {
     final css = <String, String>{};
 
     if (style.color != null) {
-      final hex = style.color!
-          .toARGB32()
-          .toRadixString(16)
-          .padLeft(8, '0')
-          .toUpperCase();
+      final hex = style.color!.toARGB32().toRadixString(16).padLeft(8, '0').toUpperCase();
       css['color'] = '#$hex';
     }
 
@@ -182,9 +178,7 @@ class HtmlLatex extends StatelessWidget {
     }
 
     if (style.fontStyle != null) {
-      css['font-style'] = style.fontStyle == FontStyle.italic
-          ? 'italic'
-          : 'normal';
+      css['font-style'] = style.fontStyle == FontStyle.italic ? 'italic' : 'normal';
     }
 
     if (style.letterSpacing != null) {
@@ -208,11 +202,7 @@ class HtmlLatex extends StatelessWidget {
     }
 
     if (style.decorationColor != null) {
-      final hex = style.decorationColor!
-          .toARGB32()
-          .toRadixString(16)
-          .padLeft(8, '0')
-          .toUpperCase();
+      final hex = style.decorationColor!.toARGB32().toRadixString(16).padLeft(8, '0').toUpperCase();
       css['text-decoration-color'] = '#$hex';
     }
 

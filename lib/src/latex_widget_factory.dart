@@ -123,13 +123,14 @@ class _MathWidgetBuilder {
         final customWidget = config.customMathBuilder?.call(parsed.tex, styleData);
         if (customWidget != null) {
           final dynamicWidth = _calculateLatexWidth(parsed.tex, fontSize, width);
-          return config.responsiveLayout
+          final wrappedWidget = config.responsiveLayout
               ? _wrapResponsive(
                   child: customWidget,
                   maxWidth: width,
                   contentMaxWidth: dynamicWidth,
                 )
               : customWidget;
+          return _wrapWithTapHandler(wrappedWidget, parsed.tex);
         }
 
         if (config.enableFallback && _shouldPreferMath2Svg(parsed.tex, isDisplayMode: displayMode)) {
@@ -146,13 +147,14 @@ class _MathWidgetBuilder {
             isDisplayMode: displayMode,
           );
 
-          return config.responsiveLayout
+          final wrappedWidget = config.responsiveLayout
               ? _wrapResponsive(
                   child: earlyFallback,
                   maxWidth: width,
                   contentMaxWidth: dynamicWidth,
                 )
               : earlyFallback;
+          return _wrapWithTapHandler(wrappedWidget, parsed.tex);
         }
 
         final primaryScale = displayMode ? config.primaryScaleBlock : config.primaryScaleInline;
@@ -175,14 +177,28 @@ class _MathWidgetBuilder {
           width: width,
         );
 
-        return config.responsiveLayout
+        final wrappedWidget = config.responsiveLayout
             ? _wrapResponsive(
                 child: widget,
                 maxWidth: width,
                 contentMaxWidth: dynamicWidth,
               )
             : widget;
+        return _wrapWithTapHandler(wrappedWidget, parsed.tex);
       },
+    );
+  }
+
+  Widget _wrapWithTapHandler(Widget widget, String latex) {
+    if (config.onLatexSelected == null) {
+      return widget;
+    }
+
+    return GestureDetector(
+      onTap: () {
+        config.onLatexSelected!(latex);
+      },
+      child: widget,
     );
   }
 
