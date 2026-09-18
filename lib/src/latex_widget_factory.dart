@@ -39,7 +39,8 @@ import 'style_parser.dart';
 /// ```
 class LatexHtmlWidgetFactory extends WidgetFactory {
   /// Creates a [LatexHtmlWidgetFactory] with optional customization config.
-  LatexHtmlWidgetFactory({LatexHtmlWidgetFactoryConfig? config}) : config = config ?? const LatexHtmlWidgetFactoryConfig();
+  LatexHtmlWidgetFactory({LatexHtmlWidgetFactoryConfig? config})
+    : config = config ?? const LatexHtmlWidgetFactoryConfig();
 
   /// The configuration for this factory instance.
   final LatexHtmlWidgetFactoryConfig config;
@@ -116,9 +117,16 @@ class _MathWidgetBuilder {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final color = styleData.color ?? config.defaultColor ?? (Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black);
+        final color =
+            styleData.color ??
+            config.defaultColor ??
+            (Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : Colors.black);
 
-        final width = constraints.maxWidth.isFinite ? constraints.maxWidth : MediaQuery.sizeOf(context).width;
+        final width = constraints.maxWidth.isFinite
+            ? constraints.maxWidth
+            : MediaQuery.sizeOf(context).width;
         // Check for custom math builder first
         final customWidget = config.customMathBuilder?.call(
           parsed.tex,
@@ -140,7 +148,8 @@ class _MathWidgetBuilder {
           return _wrapWithTapHandler(wrappedWidget, parsed.tex, rawText);
         }
 
-        if (config.enableFallback && _shouldPreferMath2Svg(parsed.tex, isDisplayMode: displayMode)) {
+        if (config.enableFallback &&
+            _shouldPreferMath2Svg(parsed.tex, isDisplayMode: displayMode)) {
           final dynamicWidth = _calculateLatexWidth(
             parsed.tex,
             fontSize,
@@ -168,7 +177,9 @@ class _MathWidgetBuilder {
           return _wrapWithTapHandler(wrappedWidget, parsed.tex, rawText);
         }
 
-        final primaryScale = displayMode ? config.primaryScaleBlock : config.primaryScaleInline;
+        final primaryScale = displayMode
+            ? config.primaryScaleBlock
+            : config.primaryScaleInline;
         final mathFontSize = fontSize * primaryScale;
         final dynamicWidth = _calculateLatexWidth(
           parsed.tex,
@@ -264,8 +275,13 @@ class _MathWidgetBuilder {
 
     // Primary freeze pattern (like ID:1438): inline-delimited, multiline aligned,
     // heavy chained transformations.
-    final riskyInlineAligned = !isDisplayMode && hasAlignedEnv && hasLatexLineBreak && hasAlignmentMarker;
-    final denseChainedInline = !isDisplayMode && hasAlignedEnv && rightArrowCount >= 3;
+    final riskyInlineAligned =
+        !isDisplayMode &&
+        hasAlignedEnv &&
+        hasLatexLineBreak &&
+        hasAlignmentMarker;
+    final denseChainedInline =
+        !isDisplayMode && hasAlignedEnv && rightArrowCount >= 3;
 
     // Equation blocks embedded in inline delimiters are also risky.
     final inlineEquationEnv = !isDisplayMode && hasEquationEnv;
@@ -281,7 +297,9 @@ class _MathWidgetBuilder {
     required double dynamicHeight,
     required bool isDisplayMode,
   }) {
-    final scale = isDisplayMode ? config.fallbackScaleBlock : config.fallbackScaleInline;
+    final scale = isDisplayMode
+        ? config.fallbackScaleBlock
+        : config.fallbackScaleInline;
     final verticalPadding = config.fallbackVerticalPadding;
 
     return FutureBuilder<void>(
@@ -300,7 +318,9 @@ class _MathWidgetBuilder {
         return Padding(
           padding: EdgeInsets.symmetric(vertical: verticalPadding),
           child: Align(
-            alignment: isDisplayMode ? Alignment.centerLeft : Alignment.centerLeft,
+            alignment: isDisplayMode
+                ? Alignment.centerLeft
+                : Alignment.centerLeft,
             child: Transform.scale(
               alignment: Alignment.centerLeft,
               scale: scale,
@@ -312,14 +332,17 @@ class _MathWidgetBuilder {
                 ),
                 child: Math2SVG(
                   math: tex,
-                  loadingWidgetBuilder: (_) => Text(rawText, style: styleData.toTextStyle()),
+                  loadingWidgetBuilder: (_) =>
+                      Text(rawText, style: styleData.toTextStyle()),
                   errorWidgetBuilder: (_, error) {
-                    final fallbackError = error ?? Exception('Math2SVG render error');
+                    final fallbackError =
+                        error ?? Exception('Math2SVG render error');
                     final customError = config.onMathError?.call(
                       fallbackError,
                       tex,
                     );
-                    return customError ?? Text(rawText, style: styleData.toTextStyle());
+                    return customError ??
+                        Text(rawText, style: styleData.toTextStyle());
                   },
                 ),
               ),
@@ -335,7 +358,10 @@ class _MathWidgetBuilder {
       return true;
     }
 
-    return tex.contains(r'\\') || tex.contains(r'\sum') || tex.contains(r'\int') || tex.contains(r'\prod');
+    return tex.contains(r'\\') ||
+        tex.contains(r'\sum') ||
+        tex.contains(r'\int') ||
+        tex.contains(r'\prod');
   }
 
   LatexStyleData _extractStyles() {
@@ -374,7 +400,9 @@ class _MathWidgetBuilder {
       map['font-weight'] = _fontWeightToString(data.fontWeight!);
     }
     if (data.fontStyle != null) {
-      map['font-style'] = data.fontStyle == FontStyle.italic ? 'italic' : 'normal';
+      map['font-style'] = data.fontStyle == FontStyle.italic
+          ? 'italic'
+          : 'normal';
     }
 
     return map;
@@ -528,7 +556,8 @@ class _MathWidgetBuilder {
 
     var i = 0;
     while (i < tex.length) {
-      if (i <= tex.length - command.length && tex.substring(i, i + command.length) == command) {
+      if (i <= tex.length - command.length &&
+          tex.substring(i, i + command.length) == command) {
         depth++;
         maxDepth = maxDepth > depth ? maxDepth : depth;
         i += command.length;
@@ -701,11 +730,7 @@ Widget _wrapResponsive({
     return child;
   }
 
-  return SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    physics: const BouncingScrollPhysics(),
-    child: child,
-  );
+  return child;
 }
 
 class _LatexPayload {
