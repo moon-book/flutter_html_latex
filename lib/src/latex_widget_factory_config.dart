@@ -42,6 +42,7 @@ class LatexHtmlWidgetFactoryConfig {
     this.lineBreakRelPenalty = 500,
     this.lineBreakBinOpPenalty = 700,
     this.enforceNoBreak = true,
+    this.useSelectableMath = true,
     this.primaryScaleInline = 1.0,
     this.primaryScaleBlock = 1.0,
     this.fallbackScaleInline = 0.86,
@@ -187,6 +188,12 @@ class LatexHtmlWidgetFactoryConfig {
   /// Default: true
   final bool enforceNoBreak;
 
+  /// Use [SelectableMath] for the primary renderer so formulas can be selected
+  /// and copied as TeX.
+  ///
+  /// Default: true
+  final bool useSelectableMath;
+
   /// Scale applied to inline formulas rendered by the primary `flutter_math_fork` renderer.
   ///
   /// Default: 1.0
@@ -241,6 +248,7 @@ class LatexHtmlWidgetFactoryConfig {
     int? lineBreakRelPenalty,
     int? lineBreakBinOpPenalty,
     bool? enforceNoBreak,
+    bool? useSelectableMath,
     double? primaryScaleInline,
     double? primaryScaleBlock,
     double? fallbackScaleInline,
@@ -260,15 +268,19 @@ class LatexHtmlWidgetFactoryConfig {
       mathJaxSupported: mathJaxSupported ?? this.mathJaxSupported,
       responsiveLayout: responsiveLayout ?? this.responsiveLayout,
       autoLineBreak: autoLineBreak ?? this.autoLineBreak,
-      autoLineBreakDisplayOnly: autoLineBreakDisplayOnly ?? this.autoLineBreakDisplayOnly,
+      autoLineBreakDisplayOnly:
+          autoLineBreakDisplayOnly ?? this.autoLineBreakDisplayOnly,
       lineBreakRelPenalty: lineBreakRelPenalty ?? this.lineBreakRelPenalty,
-      lineBreakBinOpPenalty: lineBreakBinOpPenalty ?? this.lineBreakBinOpPenalty,
+      lineBreakBinOpPenalty:
+          lineBreakBinOpPenalty ?? this.lineBreakBinOpPenalty,
       enforceNoBreak: enforceNoBreak ?? this.enforceNoBreak,
+      useSelectableMath: useSelectableMath ?? this.useSelectableMath,
       primaryScaleInline: primaryScaleInline ?? this.primaryScaleInline,
       primaryScaleBlock: primaryScaleBlock ?? this.primaryScaleBlock,
       fallbackScaleInline: fallbackScaleInline ?? this.fallbackScaleInline,
       fallbackScaleBlock: fallbackScaleBlock ?? this.fallbackScaleBlock,
-      fallbackVerticalPadding: fallbackVerticalPadding ?? this.fallbackVerticalPadding,
+      fallbackVerticalPadding:
+          fallbackVerticalPadding ?? this.fallbackVerticalPadding,
       hyphenationCharacter: hyphenationCharacter ?? this.hyphenationCharacter,
     );
   }
@@ -282,6 +294,7 @@ class LatexHtmlWidgetFactoryConfig {
       'mathJaxSupported: $mathJaxSupported, '
       'responsiveLayout: $responsiveLayout, '
       'autoLineBreak: $autoLineBreak, '
+      'useSelectableMath: $useSelectableMath, '
       'primaryScaleInline: $primaryScaleInline, '
       'primaryScaleBlock: $primaryScaleBlock, '
       'fallbackScaleInline: $fallbackScaleInline, '
