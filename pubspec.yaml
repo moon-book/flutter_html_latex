@@ -13,7 +13,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_widget_from_html_core: ^0.17.0
-  flutter_math_fork: ^0.7.4
+  flutter_math_fork:
+    git:
+      url: https://github.com/moon-book/flutter_math_fork
+      ref: 22a86ad7926c9a6765c94a34fbc803afa7579ac3
   flutter_tex: #^5.2.6
     git:
       url: https://github.com/moon-book/flutter_tex
