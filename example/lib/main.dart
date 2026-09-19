@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:example/select_order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_html_latex/flutter_html_latex.dart';
@@ -180,7 +181,7 @@ class _QuizDetailPageState extends State<QuizDetailPage> {
           const SizedBox(height: 8),
           SelectionArea(
             child: HtmlLatex(
-              widget.item.question,
+              r'<b>Lời giải chi tiết:</b><br><img src="https://asset.moon.vn/img/chat/large/2026/8/8c160eeb-c5ca-49c1-8a8a-c26d792a705c.jpg" data-filename="" style="max-width: 600px; height: auto;"><b><br></b><br>Xét $\Delta FBC$ (vuông tại $F$) và $\Delta ECB$ (vuông tại $E$), ta có:<br><br>$CF = BE$ (theo giả thiết)<br><br>$BC$ là cạnh chung<br><br>$\Rightarrow \Delta FBC = \Delta ECB$ (cạnh huyền – cạnh góc vuông)<br><br>$\Rightarrow \widehat{FBC} = \widehat{ECB}$ (hai góc tương ứng)<br><br><br>Do $\widehat{ABC} = \widehat{ACB}$ nên $\Delta ABC$ cân tại $A$.<br><br>Suy ra $AB = AC$ (1).<br><br><br>Xét $\Delta EAB$ (vuông tại $E$) và $\Delta DBA$ (vuông tại $D$), ta có:<br><br>$BE = AD$ (theo giả thiết)<br><br>$AB$ là cạnh chung<br><br>$\Rightarrow \Delta EAB = \Delta DBA$ (cạnh huyền – cạnh góc vuông)<br><br>$\Rightarrow \widehat{EAB} = \widehat{DBA}$ (hai góc tương ứng)<br><br><br>Do $\widehat{CAB} = \widehat{CBA}$ nên $\Delta ABC$ cân tại $C$.<br><br>Suy ra $CA = CB$ (2).<br><br><br>Từ (1) và (2), ta có $AB = BC = CA$, vậy $\Delta ABC$ là tam giác đều.',
               useSelectableMath: true,
               style: const TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w600),
               mathJaxSupported: kMathJaxSupported,

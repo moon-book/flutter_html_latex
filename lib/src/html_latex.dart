@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html_latex/src/html_selection_container.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 import 'helper/markdown_to_html.dart';
@@ -123,19 +124,16 @@ class HtmlLatex extends StatelessWidget {
       mathJaxSupported: mathJaxSupported ?? base.mathJaxSupported,
       responsiveLayout: responsiveLayout ?? base.responsiveLayout,
       autoLineBreak: autoLineBreak ?? base.autoLineBreak,
-      autoLineBreakDisplayOnly:
-          autoLineBreakDisplayOnly ?? base.autoLineBreakDisplayOnly,
+      autoLineBreakDisplayOnly: autoLineBreakDisplayOnly ?? base.autoLineBreakDisplayOnly,
       lineBreakRelPenalty: lineBreakRelPenalty ?? base.lineBreakRelPenalty,
-      lineBreakBinOpPenalty:
-          lineBreakBinOpPenalty ?? base.lineBreakBinOpPenalty,
+      lineBreakBinOpPenalty: lineBreakBinOpPenalty ?? base.lineBreakBinOpPenalty,
       enforceNoBreak: enforceNoBreak ?? base.enforceNoBreak,
       useSelectableMath: useSelectableMath ?? base.useSelectableMath,
       primaryScaleInline: primaryScaleInline ?? base.primaryScaleInline,
       primaryScaleBlock: primaryScaleBlock ?? base.primaryScaleBlock,
       fallbackScaleInline: fallbackScaleInline ?? base.fallbackScaleInline,
       fallbackScaleBlock: fallbackScaleBlock ?? base.fallbackScaleBlock,
-      fallbackVerticalPadding:
-          fallbackVerticalPadding ?? base.fallbackVerticalPadding,
+      fallbackVerticalPadding: fallbackVerticalPadding ?? base.fallbackVerticalPadding,
       customStylesBuilder: (element) {
         final fromConfig = base.customStylesBuilder?.call(element);
         final fromWidget = customStylesBuilder?.call(element);
@@ -153,14 +151,14 @@ class HtmlLatex extends StatelessWidget {
       },
     );
 
-    final htmlData = autoConvertLatex && containsLatexMath(data)
-        ? convertMarkdownToHtmlLatex(data)
-        : data;
+    final htmlData = autoConvertLatex && containsLatexMath(data) ? convertMarkdownToHtmlLatex(data) : data;
 
-    return HtmlWidget(
-      htmlData,
-      factoryBuilder: () => LatexHtmlWidgetFactory(config: mergedConfig),
-      textStyle: style,
+    return HtmlSelectionContainer(
+      child: HtmlWidget(
+        htmlData,
+        factoryBuilder: () => LatexHtmlWidgetFactory(config: mergedConfig),
+        textStyle: style,
+      ),
     );
   }
 
@@ -172,11 +170,7 @@ class HtmlLatex extends StatelessWidget {
     final css = <String, String>{};
 
     if (style.color != null) {
-      final hex = style.color!
-          .toARGB32()
-          .toRadixString(16)
-          .padLeft(8, '0')
-          .toUpperCase();
+      final hex = style.color!.toARGB32().toRadixString(16).padLeft(8, '0').toUpperCase();
       css['color'] = '#$hex';
     }
 
@@ -193,9 +187,7 @@ class HtmlLatex extends StatelessWidget {
     }
 
     if (style.fontStyle != null) {
-      css['font-style'] = style.fontStyle == FontStyle.italic
-          ? 'italic'
-          : 'normal';
+      css['font-style'] = style.fontStyle == FontStyle.italic ? 'italic' : 'normal';
     }
 
     if (style.letterSpacing != null) {
@@ -219,11 +211,7 @@ class HtmlLatex extends StatelessWidget {
     }
 
     if (style.decorationColor != null) {
-      final hex = style.decorationColor!
-          .toARGB32()
-          .toRadixString(16)
-          .padLeft(8, '0')
-          .toUpperCase();
+      final hex = style.decorationColor!.toARGB32().toRadixString(16).padLeft(8, '0').toUpperCase();
       css['text-decoration-color'] = '#$hex';
     }
 
