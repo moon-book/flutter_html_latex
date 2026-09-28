@@ -153,12 +153,19 @@ class HtmlLatex extends StatelessWidget {
 
     final htmlData = autoConvertLatex && containsLatexMath(data) ? convertMarkdownToHtmlLatex(data) : data;
 
-    return HtmlSelectionContainer(
-      child: HtmlWidget(
-        htmlData,
-        factoryBuilder: () => LatexHtmlWidgetFactory(config: mergedConfig),
-        textStyle: style,
-      ),
+    if (useSelectableMath == true) {
+      return HtmlSelectionContainer(
+        child: HtmlWidget(
+          htmlData,
+          factoryBuilder: () => LatexHtmlWidgetFactory(config: mergedConfig),
+          textStyle: style,
+        ),
+      );
+    }
+    return HtmlWidget(
+      htmlData,
+      factoryBuilder: () => LatexHtmlWidgetFactory(config: mergedConfig),
+      textStyle: style,
     );
   }
 
