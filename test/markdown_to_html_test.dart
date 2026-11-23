@@ -16,6 +16,104 @@ void main() {
         isFalse,
       );
     });
+
+    test('ignores currency dollar signs in plain text', () {
+      expect(
+        containsLatexMath(
+          r'milestone: $1 Billion <b>(6)</b>__ since!<br>- $97 Million+ raised',
+        ),
+        isFalse,
+      );
+      expect(containsLatexMath(r'It costs $5 and $10.'), isFalse);
+      expect(containsLatexMath(r'Gia $5, giam con $ 3'), isFalse);
+      expect(containsLatexMath(r'Only one $5 here.'), isFalse);
+    });
+
+    test('still detects math next to currency', () {
+      expect(containsLatexMath(r'Pay $5 when $x$ is even'), isTrue);
+    });
+
+    test('detects escaped dollar so it can be unescaped', () {
+      expect(containsLatexMath(r'Gia \$5'), isTrue);
+    });
+  });
+
+  group('currency dollar signs', () {
+    test('keeps currency text and does not create inline math', () {
+      const markdown =
+          r'milestone: $1 Billion <b>(6)</b>__________ since our founding!'
+          r'<br>- $97 Million+ raised worldwide.';
+
+      final html = convertMarkdownToHtmlLatex(markdown);
+
+      expect(html, isNot(contains('math-inline')));
+      expect(html, contains(r'$1 Billion <b>(6)</b>'));
+      expect(html, contains(r'$97 Million+'));
+    });
+
+    test('rejects closing dollar followed by a digit', () {
+      final html = convertMarkdownToHtmlLatex(r'From $5 to $10 when $x$.');
+
+      expect(html, contains(r'From $5 to $10 when '));
+      expect(html, contains(r'<span class="math-inline">\(x\)</span>'));
+    });
+
+    test('rejects closing dollar preceded by whitespace for currency', () {
+      final html = convertMarkdownToHtmlLatex(r'Tu $5 den $ 10 va $y = 2$');
+
+      expect(html, contains(r'Tu $5 den $ 10 va '));
+      expect(html, contains(r'<span class="math-inline">\(y = 2\)</span>'));
+    });
+
+    test('renders escaped dollar as a literal dollar', () {
+      final html = convertMarkdownToHtmlLatex(r'Gia \$5 va \$10, $x$');
+
+      expect(html, contains(r'Gia $5 va $10, '));
+      expect(html, isNot(contains(r'\$')));
+      expect(html, contains(r'<span class="math-inline">\(x\)</span>'));
+    });
+
+    test('keeps escaped dollar inside a formula', () {
+      final html = convertMarkdownToHtmlLatex(r'$\$5 + x$');
+
+      expect(html, contains(r'<span class="math-inline">\(\$5 + x\)</span>'));
+    });
+  });
+
+  group('legacy data compatibility', () {
+    String inline(String latex) =>
+        '<span class="math-inline">\\($latex\\)</span>';
+
+    test('keeps MathType formulas with a space before the closing dollar', () {
+      final html = convertMarkdownToHtmlLatex(
+        r'Ta co $\Rightarrow $ va ${{x}^{2}} $ nen $x + 1 $.',
+      );
+
+      expect(html, contains(inline(r'\Rightarrow')));
+      expect(html, contains(inline(r'{{x}^{2}}')));
+      expect(html, contains(inline(r'x + 1')));
+    });
+
+    test('keeps formulas that start with a digit', () {
+      final html = convertMarkdownToHtmlLatex(r'Ta co $2x+1$ va $1$ va $3$.');
+
+      expect(html, contains(inline('2x+1')));
+      expect(html, contains(inline('1')));
+      expect(html, contains(inline('3')));
+    });
+
+    test('keeps a formula closed right before a digit when not currency', () {
+      final html = convertMarkdownToHtmlLatex(r'Dap an $x$2 dong');
+
+      expect(html, contains(inline('x')));
+    });
+
+    test('a double backslash does not escape the following dollar', () {
+      final html = convertMarkdownToHtmlLatex(r'a\\$x$ va $a \\$');
+
+      expect(html, contains(inline('x')));
+      expect(html, contains(inline(r'a \\')));
+    });
   });
 
   group('convertMarkdownToHtmlLatex', () {
