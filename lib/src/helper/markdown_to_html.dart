@@ -9,10 +9,20 @@ String convertMarkdownToHtmlLatex(String markdown) {
 }
 
 bool containsLatexMath(String input) {
-  return RegExp(r'\$\$[\s\S]+?\$\$').hasMatch(input) ||
-      RegExp(r'\\\[[\s\S]+?\\\]').hasMatch(input) ||
-      RegExp(r'(?<!\$)\$(?!\$)[\s\S]+?(?<!\$)\$(?!\$)').hasMatch(input) ||
-      RegExp(r'\\\([\s\S]+?\\\)').hasMatch(input);
+  return RegExp(r'\\\[[\s\S]+?\\\]').hasMatch(input) ||
+      RegExp(r'\\\([\s\S]+?\\\)').hasMatch(input) ||
+      input.contains(r'\$') ||
+      _containsDollarMath(input);
+}
+
+bool _containsDollarMath(String input) {
+  if (!input.contains(r'$')) {
+    return false;
+  }
+
+  final found = <_MathExpression>[];
+  _extractDollarMathExpressions(input, found);
+  return found.isNotEmpty;
 }
 
 String _convertMarkdownToHtml(
@@ -138,6 +148,20 @@ String _extractDollarMathExpressions(
   var index = 0;
 
   while (index < text.length) {
+    // `\\` is a literal backslash pair: consume it whole so the second
+    // backslash cannot escape a following `$`.
+    if (text.startsWith(r'\\', index)) {
+      buffer.write(r'\\');
+      index += 2;
+      continue;
+    }
+
+    if (text.startsWith(r'\$', index)) {
+      buffer.write(_dollarEntity);
+      index += 2;
+      continue;
+    }
+
     if (text.startsWith(r'$$', index)) {
       final closeIndex = text.indexOf(r'$$', index + 2);
       if (closeIndex == -1) {
@@ -185,17 +209,72 @@ String _extractDollarMathExpressions(
   return buffer.toString();
 }
 
+/// Finds the `$` closing an inline formula opened just before [start].
+///
+/// Escaped `\$` inside the formula is skipped. When the opener looks like
+/// currency (`$1 Billion`, `$ 5`), Pandoc's `tex_math_dollars` closing rules
+/// apply: the closing `$` must not be preceded by whitespace nor followed by
+/// a digit, and the first `$` failing them ends the search (inside real
+/// LaTeX every unescaped `$` is a delimiter). Openers that do not start with
+/// a digit keep the legacy "next `$` closes" behaviour, so existing data
+/// such as MathType output `$\Rightarrow $` still renders as math.
 int _findSingleDollarClose(String text, int start) {
+  final isCurrencyLike = _looksLikeCurrencyOpener(text, start);
+
   for (var index = start; index < text.length; index++) {
-    if (text.codeUnitAt(index) == _dollarCodeUnit) {
+    final unit = text.codeUnitAt(index);
+    if (unit == _backslashCodeUnit) {
+      index++;
+      continue;
+    }
+
+    if (unit != _dollarCodeUnit) {
+      continue;
+    }
+
+    if (!isCurrencyLike || _isValidClosingDollar(text, index)) {
       return index;
     }
+
+    return -1;
   }
 
   return -1;
 }
 
+/// True when the text right after an opening `$` (ignoring spaces) is a
+/// digit, as in `$97 Million` or `$ 5`.
+bool _looksLikeCurrencyOpener(String text, int start) {
+  for (var index = start; index < text.length; index++) {
+    final unit = text.codeUnitAt(index);
+    if (unit == _spaceCodeUnit) {
+      continue;
+    }
+
+    return _isDigit(unit);
+  }
+
+  return false;
+}
+
+bool _isValidClosingDollar(String text, int index) {
+  final previous = text[index - 1];
+  if (previous.trim().isEmpty) {
+    return false;
+  }
+
+  final hasNext = index + 1 < text.length;
+  return !(hasNext && _isDigit(text.codeUnitAt(index + 1)));
+}
+
+bool _isDigit(int unit) => unit >= _zeroCodeUnit && unit <= _nineCodeUnit;
+
 const _dollarCodeUnit = 36;
+const _backslashCodeUnit = 92;
+const _spaceCodeUnit = 32;
+const _zeroCodeUnit = 48;
+const _nineCodeUnit = 57;
+const _dollarEntity = '&#36;';
 
 String _unwrapStandaloneBlockMathPlaceholders(String html) {
   return html.replaceAllMapped(
