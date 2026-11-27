@@ -47,6 +47,7 @@ class LatexHtmlWidgetFactoryConfig {
     this.fallbackScaleBlock = 0.92,
     this.fallbackVerticalPadding = 2.0,
     this.hyphenationCharacter = '\\u00AD',
+    this.inlineFracAsDisplay = true,
   });
 
   /// Base font size for LaTeX rendering in logical pixels.
@@ -210,6 +211,16 @@ class LatexHtmlWidgetFactoryConfig {
   /// Set to empty string to disable hyphenation.
   final String hyphenationCharacter;
 
+  /// Renders top-level `\frac` in inline math as `\dfrac`.
+  ///
+  /// Default: true
+  /// Inline math uses text style, where `\frac` shrinks numerator and
+  /// denominator to script size. Keeps standalone inline fractions
+  /// (e.g. answer options like `$\frac{3}{10}$`) at normal size.
+  /// Nested fractions and fractions inside `^`/`_` keep their natural size.
+  /// Set to false for standard TeX inline sizing (shorter line height).
+  final bool inlineFracAsDisplay;
+
   /// Creates a copy of this config with some properties changed.
   LatexHtmlWidgetFactoryConfig copyWith({
     double? baseFontSize,
@@ -232,6 +243,7 @@ class LatexHtmlWidgetFactoryConfig {
     double? fallbackScaleBlock,
     double? fallbackVerticalPadding,
     String? hyphenationCharacter,
+    bool? inlineFracAsDisplay,
   }) {
     return LatexHtmlWidgetFactoryConfig(
       baseFontSize: baseFontSize ?? this.baseFontSize,
@@ -257,6 +269,7 @@ class LatexHtmlWidgetFactoryConfig {
       fallbackVerticalPadding:
           fallbackVerticalPadding ?? this.fallbackVerticalPadding,
       hyphenationCharacter: hyphenationCharacter ?? this.hyphenationCharacter,
+      inlineFracAsDisplay: inlineFracAsDisplay ?? this.inlineFracAsDisplay,
     );
   }
 
@@ -272,6 +285,7 @@ class LatexHtmlWidgetFactoryConfig {
       'primaryScaleInline: $primaryScaleInline, '
       'primaryScaleBlock: $primaryScaleBlock, '
       'fallbackScaleInline: $fallbackScaleInline, '
-      'fallbackScaleBlock: $fallbackScaleBlock'
+      'fallbackScaleBlock: $fallbackScaleBlock, '
+      'inlineFracAsDisplay: $inlineFracAsDisplay'
       ')';
 }

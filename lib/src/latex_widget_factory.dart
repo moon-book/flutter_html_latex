@@ -4,6 +4,7 @@ import 'package:flutter_tex/flutter_tex.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 import 'flutter_html_latex_runtime.dart';
+import 'helper/inline_fraction.dart';
 import 'latex_style_data.dart';
 import 'latex_widget_factory_config.dart';
 import 'style_parser.dart';
@@ -114,15 +115,17 @@ class _MathWidgetBuilder {
     if (forceDisplayMode) displayMode = true;
     if (forceInlineMode) displayMode = false;
 
+    final tex = !displayMode && config.inlineFracAsDisplay ? promoteInlineFractions(parsed.tex) : parsed.tex;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final color = styleData.color ?? config.defaultColor ?? (Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black);
 
         final width = constraints.maxWidth.isFinite ? constraints.maxWidth : MediaQuery.sizeOf(context).width;
         // Check for custom math builder first
-        final customWidget = config.customMathBuilder?.call(parsed.tex, styleData);
+        final customWidget = config.customMathBuilder?.call(tex, styleData);
         if (customWidget != null) {
-          final dynamicWidth = _calculateLatexWidth(parsed.tex, fontSize, width);
+          final dynamicWidth = _calculateLatexWidth(tex, fontSize, width);
           return config.responsiveLayout
               ? _wrapResponsive(
                   child: customWidget,
@@ -132,15 +135,15 @@ class _MathWidgetBuilder {
               : customWidget;
         }
 
-        if (config.enableFallback && _shouldPreferMath2Svg(parsed.tex, isDisplayMode: displayMode)) {
-          final dynamicWidth = _calculateLatexWidth(parsed.tex, fontSize, width);
+        if (config.enableFallback && _shouldPreferMath2Svg(tex, isDisplayMode: displayMode)) {
+          final dynamicWidth = _calculateLatexWidth(tex, fontSize, width);
           final earlyFallback = _buildMath2SvgFallback(
-            tex: parsed.tex,
+            tex: tex,
             rawText: rawText,
             styleData: styleData,
             dynamicWidth: dynamicWidth,
             dynamicHeight: _calculateLatexHeight(
-              parsed.tex,
+              tex,
               styleData.fontSize ?? config.baseFontSize,
             ),
             isDisplayMode: displayMode,
@@ -157,7 +160,7 @@ class _MathWidgetBuilder {
 
         final primaryScale = displayMode ? config.primaryScaleBlock : config.primaryScaleInline;
         final mathFontSize = fontSize * primaryScale;
-        final dynamicWidth = _calculateLatexWidth(parsed.tex, mathFontSize, width);
+        final dynamicWidth = _calculateLatexWidth(tex, mathFontSize, width);
         final mathOptions = MathOptions(
           style: displayMode ? MathStyle.display : MathStyle.text,
           color: color,
@@ -165,7 +168,7 @@ class _MathWidgetBuilder {
         );
 
         final widget = _buildPrimaryMath(
-          tex: parsed.tex,
+          tex: tex,
           rawText: rawText,
           styleData: styleData,
           displayMode: displayMode,

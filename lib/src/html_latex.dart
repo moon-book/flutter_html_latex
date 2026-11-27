@@ -32,6 +32,7 @@ class HtmlLatex extends StatelessWidget {
     this.fallbackScaleInline,
     this.fallbackScaleBlock,
     this.fallbackVerticalPadding,
+    this.inlineFracAsDisplay,
     this.autoConvertLatex = true,
   });
 
@@ -94,6 +95,9 @@ class HtmlLatex extends StatelessWidget {
   /// Overrides config's fallback vertical padding when provided.
   final double? fallbackVerticalPadding;
 
+  /// Overrides whether inline top-level `\frac` renders as `\dfrac`.
+  final bool? inlineFracAsDisplay;
+
   /// Converts markdown-style LaTeX delimiters to HtmlLatex math HTML when true.
   ///
   /// Conversion only runs when [data] contains supported math delimiters.
@@ -125,6 +129,7 @@ class HtmlLatex extends StatelessWidget {
       fallbackScaleBlock: fallbackScaleBlock ?? base.fallbackScaleBlock,
       fallbackVerticalPadding:
           fallbackVerticalPadding ?? base.fallbackVerticalPadding,
+      inlineFracAsDisplay: inlineFracAsDisplay ?? base.inlineFracAsDisplay,
       customStylesBuilder: (element) {
         final fromConfig = base.customStylesBuilder?.call(element);
         final fromWidget = customStylesBuilder?.call(element);
