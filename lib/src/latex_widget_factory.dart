@@ -4,6 +4,7 @@ import 'package:flutter_tex/flutter_tex.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 import 'flutter_html_latex_runtime.dart';
+import 'helper/array_column_spec.dart';
 import 'helper/inline_fraction.dart';
 import 'latex_style_data.dart';
 import 'latex_widget_factory_config.dart';
@@ -115,7 +116,8 @@ class _MathWidgetBuilder {
     if (forceDisplayMode) displayMode = true;
     if (forceInlineMode) displayMode = false;
 
-    final tex = !displayMode && config.inlineFracAsDisplay ? promoteInlineFractions(parsed.tex) : parsed.tex;
+    final normalizedTex = expandArrayColumnRepeats(parsed.tex);
+    final tex = !displayMode && config.inlineFracAsDisplay ? promoteInlineFractions(normalizedTex) : normalizedTex;
 
     return LayoutBuilder(
       builder: (context, constraints) {
